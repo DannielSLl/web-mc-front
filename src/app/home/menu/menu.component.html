@@ -1,0 +1,24 @@
+<div class="content d-flex flex-column">
+<div class="container main d-flex flex-lg-row flex-column ">
+    <div class="col-lg-3 d-flex flex-column">
+    <div class="card header mb-3 d-flex flex-row">
+        <img src="../../../assets/img/hamburgesa.png" alt="...">
+        <div class="card-body d-flex align-items-center justify-content-center">
+        <p class="card-text">Categorias</p>
+        </div>
+    </div>
+    <aside class="card">
+        <ul class="list-group list-group-flush">
+        @for(categoria of categorias; track categoria){
+            <app-categorias [categoria] = "categoria"></app-categorias>  
+        }
+        </ul>
+    </aside>
+    </div>
+    <div class="products-view col-lg-9 ms-lg-3">
+    @for(producto of productos; track producto){
+        <app-productos [producto] = "producto" ></app-productos>
+    }
+    </div>
+</div> 
+</div>

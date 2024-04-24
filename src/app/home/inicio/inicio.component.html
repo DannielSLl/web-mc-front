@@ -1,0 +1,8 @@
+<div class="content d-flex flex-column">
+  <app-carousel></app-carousel>
+  <div class="container products-view">
+    @for(article of articles; track article){
+    <app-article [article]="article"></app-article>
+    }
+  </div>
+</div>
