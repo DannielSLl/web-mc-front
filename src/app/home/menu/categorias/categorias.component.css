@@ -3,3 +3,44 @@ a{
     font-size: 20px;
     text-align: center;
 }
+
+.categorias-header {
+
+    width: 90%;
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.categorias-header img {
+    width: 110px;
+}
+
+.categorias-content {
+    width: 90%;
+    height: auto; 
+
+}
+
+.card-title{
+    color: black;
+}
+
+@media (min-width: 992px) {
+
+    .categoria-item {
+
+        width: 100%; 
+
+    }
+}
+
+@media (max-width: 991px) {
+
+    .categoria-item {
+
+        width: calc(50% - 8px); 
+
+    }
+}

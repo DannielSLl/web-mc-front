@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ICategoria } from './categoria.interface';
 import { RouterLink } from '@angular/router';
+import { CATEGORIAS } from './constants.categorias';
 
 @Component({
   selector: 'app-categorias',
@@ -10,6 +11,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './categorias.component.css'
 })
 export class CategoriasComponent {
+
+  categorias:ICategoria[] = CATEGORIAS
 
   @Input() categoria: ICategoria =
   
