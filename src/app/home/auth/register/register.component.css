@@ -5,3 +5,12 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.front-page img{
+  width: 100%;
+  height: auto;
+}
+
+.texto-error{
+  min-height: 24px;
+}
