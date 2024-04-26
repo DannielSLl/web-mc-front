@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RegisterService } from '../../../services/auth/register/register.service';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,7 @@ export class RegisterComponent implements OnInit{
   });
 
 
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder, private regiserService: RegisterService){}
 
   ngOnInit(): void {
     this.clientForm = this.formBuilder.group({
@@ -65,7 +66,7 @@ export class RegisterComponent implements OnInit{
   register(): void {
 
     if(this.clientForm.valid){
-      console.log('Llmar al servicio Register')
+      this.regiserService.register(this.clientForm);
     }
     else{
       this.clientForm.markAllAsTouched();
