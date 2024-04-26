@@ -4,16 +4,17 @@
       <img src="../../../../assets/img/register-front-page.png" class="img-fluid d-none d-lg-block" alt="">
     </div>
     <div class="col-lg-7 d-flex justify-content-center">
-      <form class="w-75" [formGroup]="clientForm">
+      <form class="w-75" [formGroup]="registerClientForm">
+        <h1 class="text-center mb-4">Registrarse</h1>
         <div class="mb-2">
           <input type="text" class="form-control mb-1" formControlName="email" placeholder="Correo electrónico">
           <div class="text-danger texto-error">
-            @if(clientForm.controls['email'].invalid &&
-            (clientForm.controls['email'].dirty || clientForm.controls['email'].touched)){
-              @if(clientForm.controls['email'].errors?.['required']){
+            @if(registerClientForm.controls['email'].invalid &&
+            (registerClientForm.controls['email'].dirty || registerClientForm.controls['email'].touched)){
+              @if(registerClientForm.controls['email'].errors?.['required']){
                 <span>Este campo es requerido</span>
               }
-              @if(clientForm.controls['email'].errors?.['email']){
+              @if(registerClientForm.controls['email'].errors?.['email']){
                 <span>Formato incorrecto</span>
               }
             }
@@ -22,12 +23,12 @@
         <div class="mb-2">
           <input type="password" class="form-control" formControlName="contrasena" placeholder="Contrasena">
           <div class="text-danger texto-error">
-            @if(clientForm.controls['contrasena'].invalid &&
-            (clientForm.controls['contrasena'].dirty || clientForm.controls['contrasena'].touched)){
-              @if(clientForm.controls['contrasena'].errors?.['required']){
+            @if(registerClientForm.controls['contrasena'].invalid &&
+            (registerClientForm.controls['contrasena'].dirty || registerClientForm.controls['contrasena'].touched)){
+              @if(registerClientForm.controls['contrasena'].errors?.['required']){
                 <span>Este campo es requerido</span>
               }
-              @if(clientForm.controls['contrasena'].errors?.['pattern']){
+              @if(registerClientForm.controls['contrasena'].errors?.['pattern']){
                 <span>No tiene los caracteres especiales</span>
               }
             }
@@ -36,12 +37,12 @@
         <div class="mb-2">
           <input type="password" class="form-control" formControlName="confirmaContrasena" placeholder="Confirmar Contraseña">
           <div class="text-danger texto-error">
-            @if(clientForm.controls['confirmaContrasena'].invalid &&
-            (clientForm.controls['confirmaContrasena'].dirty || clientForm.controls['confirmaContrasena'].touched)){
-              @if(clientForm.controls['confirmaContrasena'].errors?.['required']){
+            @if(registerClientForm.controls['confirmaContrasena'].invalid &&
+            (registerClientForm.controls['confirmaContrasena'].dirty || registerClientForm.controls['confirmaContrasena'].touched)){
+              @if(registerClientForm.controls['confirmaContrasena'].errors?.['required']){
                 <span>Este campo es requerido</span>
               }
-              @if(clientForm.controls['confirmaContrasena'].getError('MustMatch')!=null){
+              @if(registerClientForm.controls['confirmaContrasena'].getError('MustMatch')!=null){
                 <span>Las contraseñas no coinciden</span>
               }
             }
@@ -50,9 +51,9 @@
         <div class="mb-2">
           <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre">
           <div class="text-danger texto-error">
-            @if(clientForm.controls['nombre'].invalid &&
-            (clientForm.controls['nombre'].dirty || clientForm.controls['nombre'].touched)){
-              @if(clientForm.controls['nombre'].errors?.['required']){
+            @if(registerClientForm.controls['nombre'].invalid &&
+            (registerClientForm.controls['nombre'].dirty || registerClientForm.controls['nombre'].touched)){
+              @if(registerClientForm.controls['nombre'].errors?.['required']){
                 <span>Este campo es requerido</span>
               }
             }
@@ -61,37 +62,37 @@
         <div class="mb-2">
           <input type="text" class="form-control" formControlName="apellidos" placeholder="Apellidos">
           <div class="text-danger texto-error">
-            @if(clientForm.controls['apellidos'].invalid &&
-            (clientForm.controls['apellidos'].dirty || clientForm.controls['apellidos'].touched)){
-              @if(clientForm.controls['apellidos'].errors?.['required']){
+            @if(registerClientForm.controls['apellidos'].invalid &&
+            (registerClientForm.controls['apellidos'].dirty || registerClientForm.controls['apellidos'].touched)){
+              @if(registerClientForm.controls['apellidos'].errors?.['required']){
                 <span>Este campo es requerido</span>
               }
             }
           </div>
         </div>
-        <div class="mb-1">
+        <div class="mb-2">
           <input type="text" class="form-control" formControlName="telefono" placeholder="Teléfeno">
           <div class="text-danger texto-error">
-            @if(clientForm.controls['telefono'].invalid &&
-            (clientForm.controls['telefono'].dirty || clientForm.controls['telefono'].touched)){
-              @if(clientForm.controls['telefono'].errors?.['required']){
+            @if(registerClientForm.controls['telefono'].invalid &&
+            (registerClientForm.controls['telefono'].dirty || registerClientForm.controls['telefono'].touched)){
+              @if(registerClientForm.controls['telefono'].errors?.['required']){
                 <span>Este campo es requerido</span>
               }
             }
           </div>
         </div>
-        <div class="mb-1">
+        <div class="mb-2">
           <input type="text" class="form-control" formControlName="direccion" placeholder="Dirección">
           <div class="text-danger texto-error">
-            @if(clientForm.controls['direccion'].invalid &&
-            (clientForm.controls['direccion'].dirty || clientForm.controls['direccion'].touched)){
-              @if(clientForm.controls['direccion'].errors?.['required']){
+            @if(registerClientForm.controls['direccion'].invalid &&
+            (registerClientForm.controls['direccion'].dirty || registerClientForm.controls['direccion'].touched)){
+              @if(registerClientForm.controls['direccion'].errors?.['required']){
                 <span>Este campo es requerido</span>
               }
             }
           </div>
         </div>
-        <div class="mb-1">
+        <div class="mb-2">
           <button type="button" class="btn btn-warning w-100 mt-2" (click)="register()">Registrarse</button>
         </div>
       </form>

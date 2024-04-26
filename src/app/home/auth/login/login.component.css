@@ -1,14 +1,16 @@
 .content{
-    min-height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.login-section{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 90px; 
+    bottom: 20vh;
     width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-.login-card{
-    width: 500px;
+.front-page img{
+    width: 100%;
+    height: auto;
 }
+
+.texto-error{
+    min-height: 24px;
+}  

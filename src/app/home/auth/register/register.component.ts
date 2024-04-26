@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RegisterService } from '../../../services/auth/register/register.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { RegisterService } from '../../../services/auth/register/register.servic
 })
 export class RegisterComponent implements OnInit{
 
-  clientForm: FormGroup = new FormGroup({
+  registerClientForm: FormGroup = new FormGroup({
     email: new FormControl(''),
     contrasena: new FormControl(''),
     confirmaContrasena: new FormControl(''),
@@ -21,11 +21,10 @@ export class RegisterComponent implements OnInit{
     direccion: new FormControl('')
   });
 
-
   constructor(private formBuilder: FormBuilder, private regiserService: RegisterService){}
 
   ngOnInit(): void {
-    this.clientForm = this.formBuilder.group({
+    this.registerClientForm = this.formBuilder.group({
       email: ['',[Validators.required, Validators.email]],
       contrasena: ['',
         [
@@ -47,8 +46,8 @@ export class RegisterComponent implements OnInit{
   mustMatch(contrasena: any, confirmaContrasena: any){
 
     return (formGroup: FormGroup) => {
-      const passwordControl = this.clientForm.controls[contrasena];
-      const conpasswordControl = this.clientForm.controls[confirmaContrasena];
+      const passwordControl = formGroup.controls[contrasena];
+      const conpasswordControl = formGroup.controls[confirmaContrasena];
 
       if(conpasswordControl.errors && !conpasswordControl.errors['MustMatch']){
         return;
@@ -65,11 +64,11 @@ export class RegisterComponent implements OnInit{
 
   register(): void {
 
-    if(this.clientForm.valid){
-      this.regiserService.register(this.clientForm);
+    if(this.registerClientForm.valid){
+      this.regiserService.register(this.registerClientForm);
     }
     else{
-      this.clientForm.markAllAsTouched();
+      this.registerClientForm.markAllAsTouched();
     }
   }
 }
