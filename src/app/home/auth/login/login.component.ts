@@ -7,9 +7,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { LoginUserDto } from '../../../model/login-user.dto';
-import { LoginService } from '../../../services/auth/login/login.service';
 import { TokenService } from '../../../services/token.service';
 import { Router } from '@angular/router';
+import { AuthClientService } from '../../../services/auth/auth-client.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService,
+    private authClientService: AuthClientService,
     private tokenService: TokenService,
     // private toast: ToastrService,
     private router: Router
@@ -49,12 +49,14 @@ export class LoginComponent implements OnInit {
       this.loginClientForm.get('password')?.value
     );
 
-    this.loginService.login(dto).subscribe({
-      next: (data) => {
-        this.tokenService.setToken(data.token);
-        this.tokenService.setLoggedIn(true);
-        this.router.navigate(['home']);
-      },
-    });
+    this.tokenService.setToken('true');
+    console.log('logueado');
+    this.tokenService.setLoggedIn(true);
+    // this.authClientService.login(dto).subscribe({
+    //   next: (data) => {
+    //     this.tokenService.setToken(data.token);
+    //     this.router.navigate(['home']);
+    //   }
+    // });
   }
 }
