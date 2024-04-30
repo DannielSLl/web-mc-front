@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 const TOKEN_KEY = 'AuthToken';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TokenService {
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
-  constructor() { }
+  constructor() {}
 
   public setToken(token: string): void {
     localStorage.setItem(TOKEN_KEY, token);
@@ -23,5 +26,9 @@ export class TokenService {
 
   public isLogged(): boolean {
     return this.getToken() != null;
+  }
+
+  public setLoggedIn(value: boolean) {
+    this.isLoggedInSubject.next(value);
   }
 }
