@@ -1,38 +1,62 @@
 <div class="content">
   <div class="container d-flex my-lg-5 my-3 flex-column flex-lg-row">
     <div class="front-page col-lg-5 d-flex justify-content-center">
-      <img src="../../../../assets/img/login-img.svg" class="img-fluid d-none d-lg-block" alt="">
+      <img
+        src="../../../../assets/img/login-img.svg"
+        class="img-fluid d-none d-lg-block"
+        alt=""
+      />
     </div>
     <div class="col-lg-7 d-flex justify-content-center">
-      <form class="w-75 d-flex flex-column justify-content-center" [formGroup]="loginClientForm">
+      <form
+        class="w-75 d-flex flex-column justify-content-center"
+        [formGroup]="loginClientForm"
+      >
         <h1 class="text-center mb-4">Iniciar Sesion</h1>
         <div class="mb-3">
-          <input type="text" class="form-control" id="email" formControlName="email" placeholder="Correo Electronico">
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            placeholder="Correo Electronico"
+          />
           <div class="text-danger texto-error">
             @if(loginClientForm.controls['email'].invalid &&
-            (loginClientForm.controls['email'].dirty || loginClientForm.controls['email'].touched)){
-              @if(loginClientForm.controls['email'].errors?.['required']){
-                <span>Este campo es requerido</span>
-              }
-              @if(loginClientForm.controls['email'].errors?.['email']){
-                <span>Formato incorrecto</span>
-              }
-            }
+            (loginClientForm.controls['email'].dirty ||
+            loginClientForm.controls['email'].touched)){
+            @if(loginClientForm.controls['email'].errors?.['required']){
+            <span>Este campo es requerido</span>
+            } @if(loginClientForm.controls['email'].errors?.['email']){
+            <span>Formato incorrecto</span>
+            } }
           </div>
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control"  formControlName="contrasena" id="Contrasena" placeholder="Contrasena">
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            id="password"
+            placeholder="password"
+          />
           <div class="text-danger texto-error">
-            @if(loginClientForm.controls['contrasena'].invalid &&
-            (loginClientForm.controls['contrasena'].dirty || loginClientForm.controls['contrasena'].touched)){
-              @if(loginClientForm.controls['contrasena'].errors?.['required']){
-                <span>Este campo es requerido</span>
-              }
-            }
+            @if(loginClientForm.controls['password'].invalid &&
+            (loginClientForm.controls['password'].dirty ||
+            loginClientForm.controls['password'].touched)){
+            @if(loginClientForm.controls['password'].errors?.['required']){
+            <span>Este campo es requerido</span>
+            } }
           </div>
         </div>
         <div class="mb-4">
-          <button type="button" class="btn btn-warning w-100 mt-2" (click)="login()">Iniciar Sesion</button>
+          <button
+            type="button"
+            class="btn btn-warning w-100 mt-2"
+            (click)="login()"
+          >
+            Iniciar Sesion
+          </button>
         </div>
       </form>
     </div>
