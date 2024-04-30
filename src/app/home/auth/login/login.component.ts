@@ -49,14 +49,11 @@ export class LoginComponent implements OnInit {
       this.loginClientForm.get('password')?.value
     );
 
-    this.tokenService.setToken('true');
-    console.log('logueado');
-    this.tokenService.setLoggedIn(true);
-    // this.authClientService.login(dto).subscribe({
-    //   next: (data) => {
-    //     this.tokenService.setToken(data.token);
-    //     this.router.navigate(['home']);
-    //   }
-    // });
+    this.authClientService.login(dto).subscribe({
+      next: (data) => {
+        this.tokenService.setToken(data.token);
+        this.router.navigate(['']);
+      },
+    });
   }
 }
