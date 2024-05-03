@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { ICategoria } from './categoria.interface';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CATEGORIAS } from './constants.categorias';
+import { CategoriasService } from '../../../services/categorias.service';
+import { CategoriaDto } from '../../../model/categoria.dto';
 
 @Component({
   selector: 'app-categorias',
@@ -10,18 +10,21 @@ import { CATEGORIAS } from './constants.categorias';
   templateUrl: './categorias.component.html',
   styleUrl: './categorias.component.css'
 })
-export class CategoriasComponent {
+export class CategoriasComponent implements OnInit {
 
-  categorias:ICategoria[] = CATEGORIAS
+  categorias: CategoriaDto[] = [];
 
-  @Input() categoria: ICategoria =
-  
-  {
-    id: 0,
-    nombre: "",
-    img: "",
+  constructor(private categoriasService: CategoriasService) { }
+
+
+  ngOnInit(): void {
+    this.categoriasService.getAllCategorias().subscribe({
+      next: (data) => {
+        this.categorias = data;
+        console.log(this.categorias)
+      },
+    });
   }
-  CambiarProductos(message:string){
-    return console.log(message);
-  }
+
+
 }

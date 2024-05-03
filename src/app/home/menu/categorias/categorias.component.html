@@ -3,13 +3,13 @@
       <img src="../../../assets/img/hamburgesa.png" alt="..." class="img-fluid">
       <div class="d-flex justify-content-center align-items-center">
         <h4>Categorias</h4>
-      </div> 
+      </div>
   </div>
   <div class="categorias-content d-flex flex-lg-column flex-wrap justify-content-between">
     @for(categoria of categorias; track categoria){
       <div class="card categoria-item mt-3">
         <a href="">
-          <img src="..." class="card-img-top" alt="...">
+          <img src={{categoria.url}} class="card-img-top" alt="...">
           <div class="card-body">
             <p class="card-title">{{categoria.nombre}}</p>
           </div>

@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class ProductosService {
 
+  API_URL: string = "http://localhost:3000/api/categoria";
 
-  API_URL: string = "https://miproyecto.free.beeceptor.com/productos";
   constructor( private httpCliente: HttpClient) { }
 
   getProductos(): Observable<any>{
