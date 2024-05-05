@@ -14,17 +14,23 @@ a{
 }
 
 .categorias-header img {
-    width: 110px;
+    width: 90px;
 }
 
 .categorias-content {
     width: 90%;
     height: auto;
+    cursor: pointer;
 
 }
 
 .card-title{
     color: black;
+}
+
+.categoria-img {
+  width: 90px; /* Ajusta el tamaño de las imágenes según tus preferencias */
+  height: auto; /* Esto mantiene la proporción de la imagen */
 }
 
 @media (min-width: 992px) {

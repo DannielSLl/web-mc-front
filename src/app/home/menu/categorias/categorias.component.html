@@ -1,20 +1,26 @@
-<div class="categorias d-flex flex-column justify-content-center align-items-center">
-  <div class="categorias-header d-flex flex-row align-items-center flex-lg-column flex-column">
-      <img src="../../../assets/img/hamburgesa.png" alt="..." class="img-fluid">
-      <div class="d-flex justify-content-center align-items-center">
-        <h4>Categorias</h4>
-      </div>
+<div
+  class="categorias d-flex flex-column justify-content-center align-items-center"
+>
+  <div
+    class="categorias-header d-flex flex-row align-items-center flex-lg-column flex-column"
+  >
+    <img src="../../../assets/img/hamburgesa.png" alt="..." class="img-fluid" />
+    <div class="d-flex justify-content-center align-items-center">
+      <h4>Categorias</h4>
+    </div>
   </div>
-  <div class="categorias-content d-flex flex-lg-column flex-wrap justify-content-between">
+  <div
+    class="categorias-content d-flex flex-lg-column flex-wrap justify-content-between"
+  >
     @for(categoria of categorias; track categoria){
-      <div class="card categoria-item mt-3">
-        <a href="">
-          <img src={{categoria.url}} class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-title">{{categoria.nombre}}</p>
-          </div>
-        </a>
-      </div>
+    <div (click)="BuscarCategoria(categoria.id)" class="card categoria-item mt-3">
+      <a>
+        <img src="{{ categoria.url }}" class="card-img-top categoria-img" alt="..." />
+        <div class="card-body">
+          <p class="card-title">{{ categoria.nombre }}</p>
+        </div>
+      </a>
+    </div>
     }
   </div>
 </div>

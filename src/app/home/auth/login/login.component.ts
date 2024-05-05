@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
     this.authClientService.login(dto).subscribe({
       next: (data) => {
         this.tokenService.setToken(data.token);
+        this.tokenService.setLoggedIn(true);
         this.router.navigate(['']);
       },
     });

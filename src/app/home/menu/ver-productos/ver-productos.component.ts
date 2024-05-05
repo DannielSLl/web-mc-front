@@ -1,3 +1,4 @@
+import { ProductoDto } from './../../../model/product.dto';
 import { Component, OnInit } from '@angular/core';
 import { ItemProductosComponent } from '../item-productos/item-productos.component';
 import { ProductosService } from '../../../services/productos.service';
@@ -8,28 +9,17 @@ import { IProducto } from '../interfaces/producto.interface';
   standalone: true,
   imports: [ItemProductosComponent],
   templateUrl: './ver-productos.component.html',
-  styleUrl: './ver-productos.component.css'
+  styleUrl: './ver-productos.component.css',
 })
-export class VerProductosComponent implements OnInit{
+export class VerProductosComponent implements OnInit {
+  productosList: IProducto[] = [];
 
-  productosList : IProducto[] = [];
-
-  constructor(private productoService: ProductosService){}
+  constructor(private productoService: ProductosService) {}
 
   ngOnInit(): void {
-    this.getProductos();
+    this.productoService.getProductos();
+    this.productoService.productos$.subscribe((productos) => {
+      this.productosList = productos;
+    });
   }
-
-  getProductos(){
-    this.productoService.getProductos().subscribe({
-      next: (result) => {
-        this.productosList = result;
-        console.log(result);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
-  }
-
 }
