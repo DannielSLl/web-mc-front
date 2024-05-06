@@ -13,7 +13,7 @@ export class ProductosService {
   private productosSubject = new BehaviorSubject<any>([]);
   productos$ = this.productosSubject.asObservable();
 
-  URL = 'https://deploy-to-mc-b52be698938f.herokuapp.com/api/products/';
+  URL = process.env['ApiUrl'] + '/api/products/';
 
   constructor(private httpCliente: HttpClient) {}
 

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class CategoriasService {
   constructor(private httpClient: HttpClient) {}
 
-  URL = 'https://deploy-to-mc-b52be698938f.herokuapp.com/api/categoria';
+  URL = process.env['ApiUrl'] + '/api/categoria';
 
   public getAllCategorias(): Observable<CategoriaDto[]> {
     return this.httpClient.get<CategoriaDto[]>(this.URL);
