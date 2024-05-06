@@ -12,12 +12,12 @@ import { RegisterUserDto } from '../../model/register-user-dto';
 export class AuthClientService {
   constructor(private httpClient: HttpClient) {}
 
-  URL = environment.ApiUrl + '/api/';
+  URL = environment.ApiUrl + '/api/auth';
 
   public login(dto: LoginUserDto): Observable<JwtTokenDto> {
-    return this.httpClient.post<JwtTokenDto>(this.URL + 'login', dto);
+    return this.httpClient.post<JwtTokenDto>(this.URL + '/signin', dto);
   }
   public register(dto: RegisterUserDto): Observable<any> {
-    return this.httpClient.post<any>(URL + 'register-client', dto);
+    return this.httpClient.post<any>(URL + '/signup', dto);
   }
 }
