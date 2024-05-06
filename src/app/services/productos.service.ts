@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CategoriaDto } from '../model/categoria.dto';
 import { __values } from 'tslib';
 import { ProductoDto } from '../model/product.dto';
 
@@ -14,14 +13,12 @@ export class ProductosService {
   private productosSubject = new BehaviorSubject<any>([]);
   productos$ = this.productosSubject.asObservable();
 
-  URL = 'http://localhost:3000/api/products/';
+  URL = 'https://deploy-to-mc-b52be698938f.herokuapp.com/api/products/';
 
   constructor(private httpCliente: HttpClient) {}
 
   getProductos(): void {
-    // Realiza la solicitud HTTP GET y suscríbete al resultado
     this.httpCliente.get<any>(this.URL).subscribe((productos) => {
-      // Cuando se obtengan los productos, actualiza el BehaviorSubject
       this.productosSubject.next(productos);
       this.productosList = productos;
     });

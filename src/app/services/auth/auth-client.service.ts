@@ -11,7 +11,7 @@ import { RegisterUserDto } from '../../model/register-user-dto';
 export class AuthClientService {
   constructor(private httpClient: HttpClient) {}
 
-  URL = 'https://localhost:3000/api/';
+  URL = 'https://deploy-to-mc-b52be698938f.herokuapp.com/api/';
 
   public login(dto: LoginUserDto): Observable<JwtTokenDto> {
     return this.httpClient.post<JwtTokenDto>(this.URL + 'login', dto);
