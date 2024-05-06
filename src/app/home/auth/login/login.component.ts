@@ -55,6 +55,9 @@ export class LoginComponent implements OnInit {
         this.tokenService.setLoggedIn(true);
         this.router.navigate(['']);
       },
+      error: (error) => {
+        alert('credenciales invalidas');
+      }
     });
   }
 }

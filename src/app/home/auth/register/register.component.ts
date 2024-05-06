@@ -90,6 +90,9 @@ export class RegisterComponent implements OnInit {
       next: (data) => {
         this.router.navigate(['login']);
       },
+      error: (error) => {
+        alert('Error al registrar');
+      }
     });
   }
 }
