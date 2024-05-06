@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginUserDto } from '../../model/login-user.dto';
@@ -11,7 +12,7 @@ import { RegisterUserDto } from '../../model/register-user-dto';
 export class AuthClientService {
   constructor(private httpClient: HttpClient) {}
 
-  URL = process.env['ApiUrl'] + '/api/';
+  URL = environment.ApiUrl + '/api/';
 
   public login(dto: LoginUserDto): Observable<JwtTokenDto> {
     return this.httpClient.post<JwtTokenDto>(this.URL + 'login', dto);

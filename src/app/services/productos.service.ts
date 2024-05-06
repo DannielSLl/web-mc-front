@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { __values } from 'tslib';
 import { ProductoDto } from '../model/product.dto';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class ProductosService {
   private productosSubject = new BehaviorSubject<any>([]);
   productos$ = this.productosSubject.asObservable();
 
-  URL = process.env['ApiUrl'] + '/api/products/';
+  URL = environment.ApiUrl + '/api/products/';
 
   constructor(private httpCliente: HttpClient) {}
 
