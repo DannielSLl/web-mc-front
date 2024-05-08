@@ -1,0 +1,118 @@
+footer{
+    height: 20vh;
+    bottom: 0;
+    width: 100%;
+}
+.rrss a{
+    height: 30px;
+}
+.rrss img{
+    height: 30px;
+}
+
+.download img{
+    height: 40px;
+}
+
+.mcdonalds-links a{
+    font-size: 14px;
+    margin: 5px;
+    color: #6f6f6f;
+    text-decoration: none;
+}
+
+.mcdonalds-links img{
+    height: 25px;
+}
+
+.download-app{
+    padding: 0;
+}
+
+.download-app-content{
+    background-color: #ffbc0d;
+    color: #292929;
+    padding-bottom: 15px;
+}
+
+
+.mcdonalds-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 8px;
+    font-size: 25px;
+}
+
+@media (min-width: 992px) {
+
+    .mcdonalds-image img{
+        width: 123px;
+        min-width: 123px;
+        margin-right: 24px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .mcdonalds-image img{
+        width: 45px;
+        min-width: 45px;
+        margin: 0;
+    }
+}
+
+.mcdonalds-content-text{
+    width: 100%;
+    padding: 10px 15px;
+}
+
+.mcdonalds-content-text h2{
+    font-size: 25px;
+}
+
+.mcdonalds-content-text p{
+    line-height: normal;
+}
+
+.mcdonalds-app-drops{
+    width: 100%;
+    margin-top: -1px;
+    margin-bottom: 40px;
+    transition: transform 0.4s;
+    transform-origin: top;
+    transform: scaleY(0);
+
+} 
+
+.mcdonalds-animated svg{
+    width: 100%;
+    height: auto;
+}
+
+.mcdonalds-app-drops.is-animated{
+    transform: scaleY(1)
+}
+
+
+.mcdonalds-content-action{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30%;
+    padding-bottom: 0;
+}
+
+
+.mcdonalds-content-action a{
+    background-color: #fff;
+    border-color: transparent;
+    padding: 12px 30px;
+    color: #292929;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.mcdonalds-content-action a:hover{
+    background-color: #F9F9F9;
+}
