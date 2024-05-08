@@ -39,10 +39,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  //   else{
-  //     this.loginClientForm.markAllAsTouched();
-  //   }
-  // }
   login(): void {
     const dto = new LoginUserDto(
       this.loginClientForm.get('email')?.value,
@@ -56,7 +52,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['']);
       },
       error: (error) => {
-        alert('credenciales invalidas');
+        alert(error.error.message);
+        console.error(error);
       }
     });
   }

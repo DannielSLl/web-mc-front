@@ -5,7 +5,7 @@ nav {
 }
 
 .navbar-nav .nav-link {
-    font-size: 18px; 
+    font-size: 18px;
 }
 .offcanvas{
     transform: translateX(-100%);
@@ -15,4 +15,7 @@ nav {
 
 .navbar-brand img{
     width:60px;
+}
+.nav-link{
+  cursor: pointer;
 }

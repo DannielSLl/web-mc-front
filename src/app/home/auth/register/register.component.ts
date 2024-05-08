@@ -27,25 +27,33 @@ export class RegisterComponent implements OnInit {
     telefono: new FormControl(''),
   });
 
+  passwordVisible = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private authClientService: AuthClientService,
     private router: Router
   ) {}
 
+  togglePasswordVisibility(): void {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
+  passwordValidators = [
+    Validators.required,
+    Validators.minLength(8),
+    Validators.maxLength(20),
+    Validators.pattern(
+      /^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^!@#$%^&*-_=+'"?,<.>:;`~]*[!@#$%^&*-_=+'"?,<.>:;`~])(?=[^A-Z]*[A-Z]).{0,10000}$/
+    ),
+  ];
+
   ngOnInit(): void {
+
     this.registerClientForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
-        contrasena: [
-          '',
-          [
-            Validators.required,
-            Validators.pattern(
-              /^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^!@#$%^&*-_=+'"?,<.>:;`~]*[!@#$%^&*-_=+'"?,<.>:;`~])(?=[^A-Z]*[A-Z]).{0,10000}$/
-            ),
-          ],
-        ],
+        contrasena: ['', this.passwordValidators],
         confirmaContrasena: ['', Validators.required],
         nombre: ['', Validators.required],
         apellidos: ['', Validators.required],
@@ -81,18 +89,20 @@ export class RegisterComponent implements OnInit {
     const dto = new RegisterUserDto(
       this.registerClientForm.get('nombre')?.value,
       this.registerClientForm.get('apellidos')?.value,
-      this.registerClientForm.get('email')?.value,
       this.registerClientForm.get('telefono')?.value,
-      this.registerClientForm.get('password')?.value
+      this.registerClientForm.get('email')?.value,
+      this.registerClientForm.get('contrasena')?.value
     );
 
     this.authClientService.register(dto).subscribe({
       next: (data) => {
         this.router.navigate(['login']);
+        console.log(data.statusDescripcion);
+        alert(data);
       },
       error: (error) => {
-        alert('Error al registrar');
-      }
+        alert(error.error.message);
+      },
     });
   }
 }

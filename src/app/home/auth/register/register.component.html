@@ -30,21 +30,33 @@
         </div>
         <div class="mb-2">
           <input
-            type="password"
+            type="{{ passwordVisible ? 'text' : 'password' }}"
             class="form-control"
             formControlName="contrasena"
             placeholder="Contraseña"
           />
+          <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+            <i class='bx bx-low-vision'></i>
+          </button>
           <div class="text-danger texto-error">
             @if(registerClientForm.controls['contrasena'].invalid &&
             (registerClientForm.controls['contrasena'].dirty ||
             registerClientForm.controls['contrasena'].touched)){
             @if(registerClientForm.controls['contrasena'].errors?.['required']){
-            <span>Este campo es requerido</span>
+            <span> - Este campo es requerido</span>
             }
-            @if(registerClientForm.controls['contrasena'].errors?.['pattern']){
-            <span>No tiene los caracteres especiales</span>
-            } }
+            @if (registerClientForm.controls['contrasena'].errors?.['minlength']) {
+            <span> - La contraseña debe tener al menos 8 caracteres</span>
+            <br>
+            }
+            @if (registerClientForm.controls['contrasena'].errors?.['maxlength']) {
+            <span> - La contraseña debe tener máximo 20 caracteres </span>
+            <br>
+            }
+            @if (registerClientForm.controls['contrasena'].errors?.['pattern']) {
+            <span> - La contraseña debe tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial</span>
+            }
+          }
           </div>
         </div>
         <div class="mb-2">
@@ -100,7 +112,7 @@
         </div>
         <div class="mb-2">
           <input
-            type="text"
+            type="number"
             class="form-control"
             formControlName="telefono"
             placeholder="Teléfeno"

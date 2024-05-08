@@ -7,7 +7,7 @@ const TOKEN_KEY = 'AuthToken';
   providedIn: 'root',
 })
 export class TokenService {
-  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  private isLoggedInSubject = new BehaviorSubject<boolean>(this.isLogged());
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
   constructor() {}
