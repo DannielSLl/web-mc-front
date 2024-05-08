@@ -1,0 +1,16 @@
+.content {
+  margin-top: 90px;
+  bottom: 20vh;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.front-page img {
+  width: 100%;
+  height: auto;
+}
+
+.texto-error {
+  min-height: 24px;
+}

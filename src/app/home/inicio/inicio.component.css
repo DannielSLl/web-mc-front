@@ -1,0 +1,31 @@
+.content {
+    margin-top: 90px; 
+    bottom: 20vh;
+    width: 100%;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.products-view {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: white;
+}
+@media (min-width: 992px) {
+    .products-view {
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: space-between; 
+    }
+}
+
+@media (max-width: 991.98px) {
+    .products-view {
+        display: flex;
+        flex-direction: column; 
+        justify-content: center; 
+    }
+}
+
+.products-view > * {
+    flex-basis: calc(50% - 10px);
+}

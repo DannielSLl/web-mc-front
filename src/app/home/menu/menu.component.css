@@ -1,0 +1,21 @@
+.content {
+    margin-top: 90px; 
+    bottom: 20vh;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.main{
+    padding: 0;
+}
+
+.header img{
+    height: 110px;
+}
+.header p{
+    font-size: 25px;
+
+}
+
