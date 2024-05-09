@@ -1,27 +1,32 @@
-# WebMcFront
+# Proyecto "Mcdonald" - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
+## Descripción
+El proyecto "Mcdonald" es la solución al problema de eficiencia y experiencia del usuario en el sitio web original. Se enfoca en mejorar la coordinación entre los empleados para procesar pedidos y mejorar la interfaz de usuario para una experiencia más agradable.
 
-## Development server
+## Tecnologías Principales
+- Angular 17.3.5 como framework de desarrollo.
+- Bootstrap 5 como framework de CSS.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Instalación y Ejecución
+1. Instalar Node.js para gestionar las dependencias del proyecto.
+2. Instalar Angular CLI 17.3.5 mediante el comando:
 
-## Code scaffolding
+npm install -g @angular/cli@17.3.5
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. Importar el CDN de Bootstrap 5 en el proyecto.
 
-## Build
+## Funcionalidades Principales
+- Interfaz de usuario amigable y responsive para una experiencia óptima en dispositivos móviles.
+- Interfaz de administrador con operaciones CRUD para gestionar productos.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Contribución
+El equipo de frontend está compuesto por Eduardo Apata, Ivan Callasya, y el jefe de proyecto y coordinador de proyectos (frontend y backend). Para contribuir al desarrollo del frontend, sigue las pautas de contribución establecidas por el equipo.
 
-## Running unit tests
+## Reporte de Errores
+Los errores y problemas pueden ser reportados a través de los comentarios en el repositorio del proyecto.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Soporte
+Actualmente, no hay un soporte específico para usuarios del proyecto más allá de la información proporcionada en este README.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Licencia
+Este proyecto no posee una licencia de marca definida.
