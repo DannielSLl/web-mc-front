@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { IProducto } from '../interfaces/producto.interface';
+import { Component, Input, Output } from '@angular/core';
+import { IProducto } from '../../interfaces/producto.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item-productos',
@@ -10,7 +11,8 @@ import { IProducto } from '../interfaces/producto.interface';
 })
 export class ItemProductosComponent {
 
-  @Input() producto: IProducto = {
+  @Input()
+  producto: IProducto = {
 
     id: 0,
     nombre: "",
@@ -22,5 +24,10 @@ export class ItemProductosComponent {
       nombre:  "",
     },
     img: "",
+  }
+  constructor( private router : Router) {}
+
+  onClickProduct(){
+    this.router.navigateByUrl('/'+this.producto.id);
   }
 }

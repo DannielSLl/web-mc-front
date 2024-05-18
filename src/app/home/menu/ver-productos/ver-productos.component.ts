@@ -1,6 +1,6 @@
 import { ProductoDto } from './../../../model/product.dto';
 import { Component, OnInit } from '@angular/core';
-import { ItemProductosComponent } from '../item-productos/item-productos.component';
+import { ItemProductosComponent } from '../ver-productos/item-productos/item-productos.component';
 import { ProductosService } from '../../../services/productos.service';
 import { IProducto } from '../interfaces/producto.interface';
 

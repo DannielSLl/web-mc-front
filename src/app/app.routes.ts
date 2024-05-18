@@ -10,6 +10,7 @@ export const routes: Routes = [
   //Pagina Principal
   { path: '', 
     loadComponent: () => import('./home/home.component').then(c => c.HomeComponent),
+    
     children: [
       //Inicio
       { 
@@ -22,24 +23,32 @@ export const routes: Routes = [
         path: 'menu',
         title: 'Menu', 
         loadComponent: () => import('./home/menu/menu.component').then(c => c.MenuComponent),
-      },
-      //Menus
-      { 
-        path: 'menu/:categoria',
-        title: 'Menu', 
-        loadComponent: () => import('./home/menu/menu.component').then(c => c.MenuComponent),
-      },
-      //Registro
-      { 
-        path: 'login',
-        title: 'Login', 
-        loadComponent: () => import('./home/auth/login/login.component').then(c => c.LoginComponent)
+        children: [
+          //Menu / Categorias
+          { 
+            path: 'menu/:categoria',
+            title: 'Menu', 
+            loadComponent: () => import('./home/menu/categorias/categorias.component').then(c => c.CategoriasComponent)
+          },
+          //Menu / Categorias / ID
+          { 
+            path: 'menu/:categoria/:id',
+            title: 'Menu', 
+            loadComponent: () => import('./home/menu/pruducto-detalles/pruducto-detalles.component').then(c => c.PruductoDetallesComponent)
+          },
+        ]
       },
       //Login
       { 
+        path: 'login',
+        title: 'Login', 
+        loadComponent: () => import('./home/login/login.component').then(c => c.LoginComponent)
+      },
+      //Register
+      { 
         path: 'register',
         title: 'Register', 
-        loadComponent: () => import('./home/auth/register/register.component').then(c => c.RegisterComponent)
+        loadComponent: () => import('./home/register/register.component').then(c => c.RegisterComponent)
       },
       //Not Found
       { 
