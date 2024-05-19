@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CategoriasService } from '../../../../services/categorias.service';
 import { CategoriaDto } from '../../../../model/categoria.dto';
@@ -12,8 +12,8 @@ import { CategoriaDto } from '../../../../model/categoria.dto';
 })
 export class CategoriasComponent implements OnInit{
 
-  categorias: CategoriaDto[] = [];
-  @Output() categoriaSeleccionada = new EventEmitter<number>();
+  @Input() categorias: CategoriaDto[] = [];
+  @Output() categoriaSeleccionada = new EventEmitter<{ id: number, nombre: string }>();
 
   constructor( private categoriasService: CategoriasService) {}
 
@@ -26,7 +26,7 @@ export class CategoriasComponent implements OnInit{
     });
     
   }
-  seleccionarCategoria(id: number): void {
-    this.categoriaSeleccionada.emit(id);
+  onSeleccionaCategoria(id: number, nombre: string): void {
+    this.categoriaSeleccionada.emit({ id: id, nombre: nombre });
   }
 }

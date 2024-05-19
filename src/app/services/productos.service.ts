@@ -48,27 +48,17 @@ export class ProductosService {
     },
   ];
 
-  //productosSubject = new BehaviorSubject<any>([]);
-  //productos$ = this.productosSubject.asObservable();
-
   private URL = environment.ApiUrl + '/api/products/';
 
   constructor(private httpCliente: HttpClient) {}
 
   public getProductos(): Observable<ProductoDto[]> {
-    // this.httpCliente.get<ProductoDto[]>(this.URL).subscribe((productos) => {
-    //   //this.productosSubject.next(productos);
-    //   this.productosList = productos;
-    //   console.log(productos)
-    // });
+
     return of(this.productosList);
   }
 
   public FilterProductoByCategoria(id: number): Observable<ProductoDto[]>  {
-    // const productos = this.productosList.filter(
-    //   (producto) => producto.categoria === id
-    // );
-    // this.productosSubject.next(productos);
+
     return of(this.productosList.filter(producto => producto.categoria === id));
   }
 }

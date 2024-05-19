@@ -15,6 +15,7 @@ export class CategoriasService {
   constructor(private httpClient: HttpClient) {}
 
   public getAllCategorias(): Observable<CategoriaDto[]> {
+    
     return this.httpClient.get<CategoriaDto[]>(this.URL);
   }
 }

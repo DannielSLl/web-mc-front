@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ItemProductosComponent } from './item-productos/item-productos.component';
 import { ProductosService } from '../../../services/productos.service';
 import { CategoriasComponent } from './categorias/categorias.component';
+import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-ver-productos',
@@ -12,12 +14,30 @@ import { CategoriasComponent } from './categorias/categorias.component';
   styleUrl: './ver-productos.component.css',
 })
 export class VerProductosComponent implements OnInit{
+  
   productosList: ProductoDto[] = [];
 
-  constructor(private productoService: ProductosService) {}
+  constructor(
+    private productoService: ProductosService,
+    private route: ActivatedRoute,
+    private titleService: Title,
+  ) {}
 
   ngOnInit(): void {
-    this.getProductos();
+    this.route.paramMap.subscribe(params => {
+
+      const categoriaId = +params.get('categoria')!; 
+
+      if (categoriaId) {
+
+        this.filtrarProductosPorCategoria(categoriaId);
+
+      } else {
+
+        this.getProductos();
+        
+      }
+    });
   }
 
   getProductos(): void{
@@ -26,7 +46,10 @@ export class VerProductosComponent implements OnInit{
     });
   }
 
-  filtrarProductosPorCategoria(categoriaId: number): void {
+  filtrarProductosPorCategoria(categoriaId: number, categoriaNombre?: string): void {
+    if (categoriaNombre) {
+      this.titleService.setTitle(categoriaNombre);
+    }
     this.productoService.FilterProductoByCategoria(categoriaId).subscribe((productosFiltrados) => {
       this.productosList = productosFiltrados;
     });
