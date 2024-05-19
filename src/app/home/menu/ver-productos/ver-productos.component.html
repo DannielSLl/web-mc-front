@@ -3,11 +3,7 @@
     <app-categorias (categoriaSeleccionada)="filtrarProductosPorCategoria($event.id)"></app-categorias>
   </div>
   <div class="col-lg-9">
-    <div class="products-view">
-      @for(item of productosList; track item){
-        <app-item-productos [producto] = "item" ></app-item-productos>
-      }
-    </div>
+    <app-productos-content></app-productos-content>
   </div>
 </div>
 

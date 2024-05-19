@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, of } from 'rxjs';
-import { __values } from 'tslib';
+import { filter, Observable, of } from 'rxjs';
 import { ProductoDto } from '../model/product.dto';
 import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProductosService {
-  productosList: ProductoDto[] = [
+export class ProductosService{
+
+  private productosList: ProductoDto[] = [
     {
       "id": 1,
       "nombre": "HAMBURGESA 1",
@@ -48,16 +48,25 @@ export class ProductosService {
     },
   ];
 
+
   private URL = environment.ApiUrl + '/api/products/';
 
   constructor(private httpCliente: HttpClient) {}
+
 
   public getProductos(): Observable<ProductoDto[]> {
 
     return of(this.productosList);
   }
 
-  public FilterProductoByCategoria(id: number): Observable<ProductoDto[]>  {
+  public getProductoById(id: number): Observable<ProductoDto> {
+    const producto = this.productosList.find(producto => producto.id === id);
+    return of(producto).pipe(
+      filter((producto): producto is ProductoDto => !!producto)
+    );
+  }
+
+  public getProductoByCategoria(id: number): Observable<ProductoDto[]>  {
 
     return of(this.productosList.filter(producto => producto.categoria === id));
   }
