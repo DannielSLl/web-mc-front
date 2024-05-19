@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CategoriasService } from '../../../../services/categorias.service';
-import { CategoriaDto } from '../../../../model/categoria.dto';
+import { CategoriasService } from '../../../services/categorias.service';
+import { CategoriaDto } from '../../../model/categoria.dto';
 
 @Component({
   selector: 'app-categorias',
@@ -13,7 +13,6 @@ import { CategoriaDto } from '../../../../model/categoria.dto';
 export class CategoriasComponent implements OnInit{
 
   @Input() categorias: CategoriaDto[] = [];
-  @Output() categoriaSeleccionada = new EventEmitter<{ id: number}>();
 
   constructor( private categoriasService: CategoriasService) {}
 
@@ -26,7 +25,5 @@ export class CategoriasComponent implements OnInit{
     });
     
   }
-  onSeleccionaCategoria(id: number): void {
-    this.categoriaSeleccionada.emit({ id: id});
-  }
 }
+

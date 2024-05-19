@@ -18,23 +18,26 @@ export const routes: Routes = [
         title: 'Home', 
         loadComponent: () => import('./home/inicio/inicio.component').then(c => c.InicioComponent)
       },
-      //Menus
+      //Menu
       { 
         path: 'menu', 
         loadComponent: () => import('./home/menu/menu.component').then(c => c.MenuComponent),
         children: [
 
-          //Menu / Categorias
+          //Menu (categorias)
           { 
             path: '',
             title: 'Menu',
-            loadComponent: () => import('./home/menu/ver-productos/ver-productos.component').then(c => c.VerProductosComponent),
+            loadComponent: () => import('./home/menu/categorias/categorias.component').then(c => c.CategoriasComponent),
           },
+
+          //Productos segun categoria
           { 
             path: ':categoria',
             title: 'Menu',
-            loadComponent: () => import('./home/menu/ver-productos/ver-productos.component').then(c => c.VerProductosComponent),
+            loadComponent: () => import('./home/menu/productos/productos.component').then(c => c.ProductosComponent),
           },
+          //Productos seleccionado
           { 
             path: ':categoria/:id',
             title: 'Detalles',

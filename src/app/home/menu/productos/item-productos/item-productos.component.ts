@@ -1,7 +1,6 @@
 import { Component, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ProductoDto } from '../../../../../model/product.dto';
-import { Title } from '@angular/platform-browser';
+import { ProductoDto } from '../../../../model/product.dto';
 
 @Component({
   selector: 'app-item-productos',
