@@ -18,17 +18,18 @@ export const routes: Routes = [
         title: 'Home', 
         loadComponent: () => import('./home/inicio/inicio.component').then(c => c.InicioComponent)
       },
-      //Menus(Categorias)
+      //Menus
       { 
         path: 'menu',
         title: 'Menu', 
         loadComponent: () => import('./home/menu/menu.component').then(c => c.MenuComponent),
         children: [
+
           //Menu / Categorias
           { 
             path: ':categoria',
             title: 'Menu', 
-            loadComponent: () => import('./home/menu/categorias/categorias.component').then(c => c.CategoriasComponent)
+            loadComponent: () => import('./home/menu/ver-productos/ver-productos.component').then(c => c.VerProductosComponent),
           },
           { 
             path: ':categoria/:id',

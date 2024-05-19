@@ -1,5 +1,5 @@
 <div class="card mt-3">
-	<a href="" [routerLink]="['/menu/categoria/', producto.id]">
+	<a href="" [routerLink]="['/menu', producto.categoria, producto.id]">
     <img [src]="producto.img" alt="...">
     <div class="card-body">
       <p class="card-title text-center">{{producto.nombre}}</p>
