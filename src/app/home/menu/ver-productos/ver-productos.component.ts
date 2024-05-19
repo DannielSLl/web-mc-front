@@ -4,7 +4,6 @@ import { ItemProductosComponent } from './item-productos/item-productos.componen
 import { ProductosService } from '../../../services/productos.service';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { ActivatedRoute } from '@angular/router';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-ver-productos',
@@ -20,7 +19,6 @@ export class VerProductosComponent implements OnInit{
   constructor(
     private productoService: ProductosService,
     private route: ActivatedRoute,
-    private titleService: Title,
   ) {}
 
   ngOnInit(): void {
@@ -41,16 +39,17 @@ export class VerProductosComponent implements OnInit{
   }
 
   getProductos(): void{
+
     this.productoService.getProductos().subscribe((productos) => {
+
       this.productosList = productos;
     });
   }
 
-  filtrarProductosPorCategoria(categoriaId: number, categoriaNombre?: string): void {
-    if (categoriaNombre) {
-      this.titleService.setTitle(categoriaNombre);
-    }
+  filtrarProductosPorCategoria(categoriaId: number): void {
+
     this.productoService.FilterProductoByCategoria(categoriaId).subscribe((productosFiltrados) => {
+
       this.productosList = productosFiltrados;
     });
   }

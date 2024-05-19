@@ -13,7 +13,7 @@ import { CategoriaDto } from '../../../../model/categoria.dto';
 export class CategoriasComponent implements OnInit{
 
   @Input() categorias: CategoriaDto[] = [];
-  @Output() categoriaSeleccionada = new EventEmitter<{ id: number, nombre: string }>();
+  @Output() categoriaSeleccionada = new EventEmitter<{ id: number}>();
 
   constructor( private categoriasService: CategoriasService) {}
 
@@ -26,7 +26,7 @@ export class CategoriasComponent implements OnInit{
     });
     
   }
-  onSeleccionaCategoria(id: number, nombre: string): void {
-    this.categoriaSeleccionada.emit({ id: id, nombre: nombre });
+  onSeleccionaCategoria(id: number): void {
+    this.categoriaSeleccionada.emit({ id: id});
   }
 }

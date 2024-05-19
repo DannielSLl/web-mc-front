@@ -13,7 +13,7 @@
     class="categorias-content d-flex flex-lg-column flex-wrap justify-content-between"
   >
     @for(categoria of categorias; track categoria){
-    <div (click)="onSeleccionaCategoria(categoria.id, categoria.nombre)" class="card categoria-item mt-3">
+    <div (click)="onSeleccionaCategoria(categoria.id)" class="card categoria-item mt-3">
       <a [routerLink]="['/menu', categoria.id]">
         <img src="{{ categoria.url }}" class="card-img-top categoria-img" alt="..." />
         <div class="card-body">
