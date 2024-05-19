@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { __values } from 'tslib';
 import { ProductoDto } from '../model/product.dto';
-import { environment } from '../../environments/environment.developmen';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
