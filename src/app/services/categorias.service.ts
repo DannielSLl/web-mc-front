@@ -8,9 +8,11 @@ import { environment } from '../../environments/environment.development';
   providedIn: 'root',
 })
 export class CategoriasService {
-  constructor(private httpClient: HttpClient) {}
 
-  URL = environment.ApiUrl + '/api/categoria';
+
+  private URL = environment.ApiUrl + '/api/categoria';
+
+  constructor(private httpClient: HttpClient) {}
 
   public getAllCategorias(): Observable<CategoriaDto[]> {
     return this.httpClient.get<CategoriaDto[]>(this.URL);

@@ -1,0 +1,14 @@
+<div class="container main d-flex flex-lg-row flex-column ">
+  <div class="col-lg-3">
+    <app-categorias (categoriaSeleccionada)="filtrarProductosPorCategoria($event)"></app-categorias>
+  </div>
+  <div class="col-lg-9">
+    <div class="products-view">
+      @for(item of productosList; track item){
+        <app-item-productos [producto] = "item" ></app-item-productos>
+      }
+    </div>
+  </div>
+</div>
+
+

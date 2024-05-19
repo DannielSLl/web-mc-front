@@ -1,6 +1,7 @@
 import { Component, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ProductoDto } from '../../../../model/product.dto';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-item-productos',
@@ -22,4 +23,7 @@ export class ItemProductosComponent {
     img: "",
     categoria:0
   }
+  
+  constructor() {}
+
 }

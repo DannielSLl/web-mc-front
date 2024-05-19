@@ -27,16 +27,18 @@ export const routes: Routes = [
 
           //Menu / Categorias
           { 
+            path: '',
+            loadComponent: () => import('./home/menu/ver-productos/ver-productos.component').then(c => c.VerProductosComponent),
+          },
+          { 
             path: ':categoria',
-            title: 'Menu', 
-            loadComponent: () => import('./home/menu/categorias/ver-productos/ver-productos.component').then(c => c.VerProductosComponent),
+            loadComponent: () => import('./home/menu/ver-productos/ver-productos.component').then(c => c.VerProductosComponent),
+          },
+          { 
+            path: ':categoria/:id',
+            loadComponent: () => import('./home/menu/pruducto-detalles/pruducto-detalles.component').then(c => c.PruductoDetallesComponent)
           }
         ]
-      },
-      { 
-        path: 'menu/:categoria/:id',
-        title: 'Menu', 
-        loadComponent: () => import('./home/menu/pruducto-detalles/pruducto-detalles.component').then(c => c.PruductoDetallesComponent)
       },
       //Login
       { 

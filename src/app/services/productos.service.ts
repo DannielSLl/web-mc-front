@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { __values } from 'tslib';
 import { ProductoDto } from '../model/product.dto';
 import { environment } from '../../environments/environment.development';
@@ -48,23 +48,27 @@ export class ProductosService {
     },
   ];
 
-  private productosSubject = new BehaviorSubject<any>([]);
-  productos$ = this.productosSubject.asObservable();
+  //productosSubject = new BehaviorSubject<any>([]);
+  //productos$ = this.productosSubject.asObservable();
 
-  URL = environment.ApiUrl + '/api/products/';
+  private URL = environment.ApiUrl + '/api/products/';
 
   constructor(private httpCliente: HttpClient) {}
 
-  getProductos(): void {
-    this.httpCliente.get<any>(this.URL).subscribe((productos) => {
-      this.productosSubject.next(productos);
-      this.productosList = productos;
-    });
+  public getProductos(): Observable<ProductoDto[]> {
+    // this.httpCliente.get<ProductoDto[]>(this.URL).subscribe((productos) => {
+    //   //this.productosSubject.next(productos);
+    //   this.productosList = productos;
+    //   console.log(productos)
+    // });
+    return of(this.productosList);
   }
-  FilterProductoByCategoria(id: number): void {
-    const productos = this.productosList.filter(
-      (producto) => producto.categoria === id
-    );
-    this.productosSubject.next(productos);
+
+  public FilterProductoByCategoria(id: number): Observable<ProductoDto[]>  {
+    // const productos = this.productosList.filter(
+    //   (producto) => producto.categoria === id
+    // );
+    // this.productosSubject.next(productos);
+    return of(this.productosList.filter(producto => producto.categoria === id));
   }
 }
