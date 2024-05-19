@@ -29,14 +29,14 @@ export const routes: Routes = [
           { 
             path: ':categoria',
             title: 'Menu', 
-            loadComponent: () => import('./home/menu/ver-productos/ver-productos.component').then(c => c.VerProductosComponent),
-          },
-          { 
-            path: ':categoria/:id',
-            title: 'Menu', 
-            loadComponent: () => import('./home/menu/pruducto-detalles/pruducto-detalles.component').then(c => c.PruductoDetallesComponent)
+            loadComponent: () => import('./home/menu/categorias/ver-productos/ver-productos.component').then(c => c.VerProductosComponent),
           }
         ]
+      },
+      { 
+        path: 'menu/:categoria/:id',
+        title: 'Menu', 
+        loadComponent: () => import('./home/menu/pruducto-detalles/pruducto-detalles.component').then(c => c.PruductoDetallesComponent)
       },
       //Login
       { 

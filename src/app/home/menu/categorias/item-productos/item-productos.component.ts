@@ -1,6 +1,5 @@
 import { Component, Input, Output } from '@angular/core';
-import { IProducto } from '../../interfaces/producto.interface';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { ProductoDto } from '../../../../model/product.dto';
 
 @Component({
