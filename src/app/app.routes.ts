@@ -26,16 +26,15 @@ export const routes: Routes = [
         children: [
           //Menu / Categorias
           { 
-            path: 'menu/:categoria',
+            path: ':categoria',
             title: 'Menu', 
             loadComponent: () => import('./home/menu/categorias/categorias.component').then(c => c.CategoriasComponent)
           },
-          //Menu / Categorias / ID
           { 
-            path: 'menu/:categoria/:id',
+            path: ':categoria/:id',
             title: 'Menu', 
             loadComponent: () => import('./home/menu/pruducto-detalles/pruducto-detalles.component').then(c => c.PruductoDetallesComponent)
-          },
+          }
         ]
       },
       //Login

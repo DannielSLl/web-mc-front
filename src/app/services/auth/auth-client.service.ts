@@ -4,7 +4,7 @@ import { LoginUserDto } from '../../model/login-user.dto';
 import { Observable } from 'rxjs';
 import { JwtTokenDto } from '../../model/token.dto';
 import { RegisterUserDto } from '../../model/register-user-dto';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.developmen';
 
 @Injectable({
   providedIn: 'root',
