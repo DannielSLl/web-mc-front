@@ -13,7 +13,7 @@ export class ProductosService{
     {
       "id": 1,
       "nombre": "HAMBURGESA 1",
-      "descripcion": "diabetes",
+      "descripcion": "Dos Exquisitas Hamburguesas de carne 100% con salsa Bacon, cebolla grillada, tocino, queso Cheddar, mostaza dulce y pan tipo Brioche. Sensacion de sabores.",
       "precio": 13000,
       "calorias": 1000,
       "img": "https://w7.pngwing.com/pngs/739/553/png-transparent-hamburger-veggie-burger-chicken-sandwich-fast-food-hamburger-burger-burger-sandwich-food-recipe-cheeseburger-thumbnail.png",
@@ -22,7 +22,7 @@ export class ProductosService{
     {
       "id": 2,
       "nombre": "HAMBURGESA 2",
-      "descripcion": "diabetes",
+      "descripcion": "Dos Exquisitas Hamburguesas de carne 100% con salsa Bacon, cebolla grillada, tocino, queso Cheddar, mostaza dulce y pan tipo Brioche. Sensacion de sabores.",
       "precio": 13000,
       "calorias": 1000,
       "img": "https://w7.pngwing.com/pngs/739/553/png-transparent-hamburger-veggie-burger-chicken-sandwich-fast-food-hamburger-burger-burger-sandwich-food-recipe-cheeseburger-thumbnail.png",
@@ -31,7 +31,7 @@ export class ProductosService{
     {
       "id": 5,
       "nombre": "HAMBURGESA 3",
-      "descripcion": "diabetes",
+      "descripcion": "Dos Exquisitas Hamburguesas de carne 100% con salsa Bacon, cebolla grillada, tocino, queso Cheddar, mostaza dulce y pan tipo Brioche. Sensacion de sabores.",
       "precio": 13000,
       "calorias": 1000,
       "img": "https://w7.pngwing.com/pngs/739/553/png-transparent-hamburger-veggie-burger-chicken-sandwich-fast-food-hamburger-burger-burger-sandwich-food-recipe-cheeseburger-thumbnail.png",
@@ -40,7 +40,7 @@ export class ProductosService{
     {
       "id": 6,
       "nombre": "HAMBURGESA 2",
-      "descripcion": "diabetes",
+      "descripcion": "Dos Exquisitas Hamburguesas de carne 100% con salsa Bacon, cebolla grillada, tocino, queso Cheddar, mostaza dulce y pan tipo Brioche. Sensacion de sabores.",
       "precio": 13000,
       "calorias": 1000,
       "img": "https://w7.pngwing.com/pngs/739/553/png-transparent-hamburger-veggie-burger-chicken-sandwich-fast-food-hamburger-burger-burger-sandwich-food-recipe-cheeseburger-thumbnail.png",
@@ -49,7 +49,7 @@ export class ProductosService{
     {
       "id": 3,
       "nombre": "HELADOS",
-      "descripcion": "diabetes",
+      "descripcion": "Dos Exquisitas Hamburguesas de carne 100% con salsa Bacon, cebolla grillada, tocino, queso Cheddar, mostaza dulce y pan tipo Brioche. Sensacion de sabores.",
       "precio": 13000,
       "calorias": 1000,
       "img": "https://w7.pngwing.com/pngs/634/470/png-transparent-ice-cream-cones-gary-s-ice-cream-ice-cream-cake-ice-cream.png",
@@ -58,7 +58,7 @@ export class ProductosService{
     {
       "id": 4,
       "nombre": "BEBIDA 1",
-      "descripcion": "diabetes",
+      "descripcion": "Dos Exquisitas Hamburguesas de carne 100% con salsa Bacon, cebolla grillada, tocino, queso Cheddar, mostaza dulce y pan tipo Brioche. Sensacion de sabores.",
       "precio": 13000,
       "calorias": 1000,
       "img": "https://c0.klipartz.com/pngpicture/496/118/gratis-png-vaso-con-refrescos-coca-cola-bebidas-gaseosas-dieta-coque-pepsi-coca.png",
