@@ -29,6 +29,24 @@ export class ProductosService{
       "categoria": 1
     },
     {
+      "id": 5,
+      "nombre": "HAMBURGESA 3",
+      "descripcion": "diabetes",
+      "precio": 13000,
+      "calorias": 1000,
+      "img": "https://w7.pngwing.com/pngs/739/553/png-transparent-hamburger-veggie-burger-chicken-sandwich-fast-food-hamburger-burger-burger-sandwich-food-recipe-cheeseburger-thumbnail.png",
+      "categoria": 1
+    },
+    {
+      "id": 6,
+      "nombre": "HAMBURGESA 2",
+      "descripcion": "diabetes",
+      "precio": 13000,
+      "calorias": 1000,
+      "img": "https://w7.pngwing.com/pngs/739/553/png-transparent-hamburger-veggie-burger-chicken-sandwich-fast-food-hamburger-burger-burger-sandwich-food-recipe-cheeseburger-thumbnail.png",
+      "categoria": 1
+    },
+    {
       "id": 3,
       "nombre": "HELADOS",
       "descripcion": "diabetes",

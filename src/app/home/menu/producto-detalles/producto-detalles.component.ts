@@ -7,8 +7,8 @@ import { ProductosService } from '../../../services/productos.service';
   selector: 'app-pruducto-detalles',
   standalone: true,
   imports: [],
-  templateUrl: './pruducto-detalles.component.html',
-  styleUrl: './pruducto-detalles.component.css'
+  templateUrl: './producto-detalles.component.html',
+  styleUrl: './producto-detalles.component.css'
 })
 export class PruductoDetallesComponent implements OnInit{
 
