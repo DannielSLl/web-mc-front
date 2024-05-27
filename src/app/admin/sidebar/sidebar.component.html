@@ -1,0 +1,55 @@
+<div class="container">
+
+  <aside class="sidebar">
+    <header>
+      <button type="button" class="sidebar-burger">
+        <i class='bx bx-menu'></i>
+      </button>
+      <img/>
+    </header>
+    <ul>
+      <li>
+        <button type="button" (click)="onClick($event)">
+          <i class='bx bx-home-alt'></i>
+          <p>Home</p>
+        </button>
+      </li>
+      <li>
+        <button ref="/admin/orders" type="button" (click)="onClick($event)" >
+          <i class='bx bx-receipt'></i>
+          <p>Ordenes</p>
+        </button>
+      </li>
+      <li>
+        <button type="button" (click)="onClick($event)">
+          <i class='bx bx-folder-plus' ></i>
+          <p>Gestion</p>
+          <i class='bx bxs-chevron-down'></i>
+        </button>
+        <div class="sub-menu">
+          <ul>
+            <li>
+              <button type="button">Usuarios</button>
+            </li>
+            <li>
+              <button type="button">Productos</button>
+            </li>
+            <li>
+              <button type="button">Ingredientes</button>
+            </li>
+            <li>
+              <button type="button">Categorias</button>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <button type="button" (click)="onClick($event)">
+          <i class='bx bx-cog' ></i>
+          <p>Compras Inventario</p>
+        </button>
+      </li>
+    </ul>
+  </aside>
+
+</div>
