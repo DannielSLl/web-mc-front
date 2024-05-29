@@ -1,0 +1,8 @@
+<div class=" d-flex flex-wrap justify-content-center">
+  @for(item of productosList; track item){
+    <div class="m-2">
+      <app-item-productos [producto] = "item" ></app-item-productos>
+    </div>
+  }
+</div>
+

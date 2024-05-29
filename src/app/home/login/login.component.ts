@@ -6,10 +6,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { LoginUserDto } from '../../../model/login-user.dto';
-import { TokenService } from '../../../services/token.service';
+import { LoginUserDto } from '../../model/login-user.dto';
+import { TokenService } from '../../services/token.service';
 import { Router } from '@angular/router';
-import { AuthClientService } from '../../../services/auth/auth-client.service';
+import { AuthClientService } from '../../services/auth/auth-client.service';
 
 @Component({
   selector: 'app-login',
