@@ -1,21 +1,40 @@
 import { Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
-
 
 export const routes: Routes = [
+
   //Rutas privadas
-  {path:'admin', component: AdminComponent},
+
+  {
+    path: 'login/admin',
+    loadComponent: () => import('./admin/auth/auth.component').then(c => c.AuthComponent),
+    data: {
+      title: 'Login'
+    }
+  },
+  { path:'dashboard',
+    loadComponent: () => import('./admin/default.component').then(c => c.DefaultComponent),
+    data: {
+      title: 'Admin'
+    },
+   children: [
+    {
+      path: '',
+      loadChildren: () => import('./admin/routes').then(m => m.routes),
+    },
+   ],
+
+  },
 
   //Rutas publicas
   //Pagina Principal
-  { path: '', 
+  { path: '',
     loadComponent: () => import('./home/home.component').then(c => c.HomeComponent),
     
     children: [
       //Inicio
-      { 
+      {
         path: '',
-        title: 'Home', 
+        title: 'Home',
         loadComponent: () => import('./home/inicio/inicio.component').then(c => c.InicioComponent)
       },
       //Menu
@@ -58,7 +77,7 @@ export const routes: Routes = [
         loadComponent: () => import('./home/register/register.component').then(c => c.RegisterComponent)
       },
       //Not Found
-      { 
+      {
         path: '**',
         title: 'Home',
         redirectTo: '',

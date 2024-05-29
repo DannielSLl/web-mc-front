@@ -1,0 +1,10 @@
+.container {
+  overflow-y: hidden;
+  position: absolute;
+  top: 25px;
+  left: 290px;
+  bottom: 300px;
+  width: 80%;
+  height: 94%;
+  border: 1px solid #c51e1e;
+}
