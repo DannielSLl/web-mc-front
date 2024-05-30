@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.card {
+  border-color: #1565c0 !important;
+  min-width: 650px;
+}
+
+.card-body {
+  background-color: #424242;
+  color: white;
+  border-radius: 5px;
+  margin-left: -3px;
+  margin-right: -3px;
+}
+.lead {
+  color: #1565c0;
+}
+.small {
+  color: #959595;
+}
+.px-5 {
+  border-top: 1px solid #1565c0;
+  border-bottom: 1px solid #1565c0;
+}
+.py-1 {
+  background-color: #1565c0;
+}
+.scrollable-section {
+  max-height: 200px; /* Ajusta la altura máxima según tus necesidades */
+  overflow-y: auto;  /* Habilita el scroll vertical */
+  padding-right: 10px; /* Opcional: espacio para el scrollbar */
+}
+
+/* Estilo opcional para personalizar el scrollbar */
+.scrollable-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-section::-webkit-scrollbar-thumb {
+  background-color: #1565c0; /* Color del scrollbar */
+  border-radius: 10px;
+}
+.button {
+  background-color: #1565c0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+
+}
