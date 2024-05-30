@@ -1,0 +1,106 @@
+.orders-container {
+  padding: 20px;
+  background-color: #f5f5f5; /* Fondo claro para el contenedor de pedidos */
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  background-color: #333; /* Fondo oscuro para el encabezado */
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para separar visualmente el encabezado */
+  z-index: 1000;
+  text-align: center;
+  border-bottom: 2px solid #444; /* Línea inferior para destacar */
+}
+
+.header h1 {
+  margin: 0;
+  color: #ffffff; /* Color del texto */
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.subtitle {
+  margin: 5px 0;
+  color: #cccccc; /* Color claro para el subtítulo */
+  font-size: 14px;
+}
+
+.order-card {
+  background: #2c2c2c;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  margin: 20px 0;
+  padding: 20px;
+  transition: transform 0.3s;
+}
+
+.order-card:hover {
+  transform: scale(1.05);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-header h2 {
+  margin: 0;
+  color: #ffffff;
+}
+
+.details-button {
+  background: #1e88e5; /* Color del botón de detalles */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.details-button:hover {
+  background: #1565c0;
+}
+
+p {
+  color: #bbbbbb;
+}
+
+.order-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001; /* Asegúrate de que esté por encima del resto del contenido */
+}
+
+.order-detail {
+  background: #00000000;
+  color: #fff;
+  padding: 20px;
+  width: 80%;
+}
+
+.close-detail-button {
+  background: #ff5722;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.close-detail-button:hover {
+  background: #e64a19;
+}
+
+
