@@ -43,17 +43,16 @@ export class AuthComponent {
       this.adminAuth.get('email')?.value,
       this.adminAuth.get('password')?.value
     );
-    this.router.navigate(['dashboard']);
-    // this.authAdminService.login(dto).subscribe({
-    //   next: (data) => {
-    //     this.tokenService.setToken(data.token);
-    //     this.tokenService.setLoggedIn(true);
-    //     this.router.navigate(['']);
-    //   },
-    //   error: (error) => {
-    //     alert(error.message);
-    //     console.error(error);
-    //   },
-    // });
+    this.authAdminService.login(dto).subscribe({
+      next: (data) => {
+        this.tokenService.setToken(data.token);
+        this.tokenService.setLoggedIn(true);
+        this.router.navigate(['']);
+      },
+      error: (error) => {
+        alert(error.message);
+        console.error(error);
+      },
+    });
   }
 }
