@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { OrderListDto } from '../../model/order-list.dto';
 import { OrdersService } from '../../services/orders.service';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
@@ -11,7 +11,6 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
   imports: [OrderDetailComponent],
 })
 export class OrdersComponent implements OnInit {
-
   @Input() ViewDetail!: boolean;
   @Output() selectedOrder: number | null = null;
 
@@ -20,30 +19,7 @@ export class OrdersComponent implements OnInit {
   constructor(private orderService: OrdersService) {}
 
   ngOnInit(): void {
-    //this.getOrders();
-    this.orders = [
-      {
-        id: 1,
-        client: 'John Doe',
-        date: new Date(),
-        items: 3,
-        status: 'pendiente',
-      },
-      {
-        id: 1,
-        client: 'John Doe',
-        date: new Date(),
-        items: 3,
-        status: 'pendiente',
-      },
-      {
-        id: 1,
-        client: 'John Doe',
-        date: new Date(),
-        items: 3,
-        status: 'pendiente',
-      },
-    ];
+    this.getOrders();
   }
 
   getOrders() {
@@ -65,7 +41,4 @@ export class OrdersComponent implements OnInit {
       this.selectedOrder = null;
     }
   }
-
-  markAsCompleted(arg0: any) {}
-
 }

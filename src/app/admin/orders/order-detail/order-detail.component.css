@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 .card {
   border-color: #1565c0 !important;
   min-width: 650px;
@@ -12,7 +12,7 @@
   margin-right: -3px;
 }
 .lead {
-  color: #1565c0;
+  color: rgb(8, 123, 255);
 }
 .small {
   color: #959595;
@@ -25,18 +25,17 @@
   background-color: #1565c0;
 }
 .scrollable-section {
-  max-height: 200px; /* Ajusta la altura máxima según tus necesidades */
-  overflow-y: auto;  /* Habilita el scroll vertical */
-  padding-right: 10px; /* Opcional: espacio para el scrollbar */
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
-/* Estilo opcional para personalizar el scrollbar */
 .scrollable-section::-webkit-scrollbar {
   width: 8px;
 }
 
 .scrollable-section::-webkit-scrollbar-thumb {
-  background-color: #1565c0; /* Color del scrollbar */
+  background-color: #1565c0;
   border-radius: 10px;
 }
 .button {
@@ -47,5 +46,28 @@
   padding: 10px 20px;
   cursor: pointer;
   margin-top: 10px;
+  font-size: medium;
+}
+.button:hover {
+  background-color: #ffffff;
+  color: #1565c0;
+}
 
+.close {
+  background-color: #1565c0;
+  border-radius: 20%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  top: 10px;
+  left: 640px;
+  position: absolute;
+  color: #ffffff;
+  font-weight: 500;
+  cursor: pointer;
+}
+.close:hover {
+  background-color: #1565c089;
+  color: #7aa2cfd7;
 }

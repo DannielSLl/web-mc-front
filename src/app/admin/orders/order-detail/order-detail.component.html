@@ -1,175 +1,54 @@
 <div class="row d-flex justify-content-center">
   <div class="col-lg-8 col-xl-7">
     <div class="card border-top border-bottom border-3">
-      <div class="card-body p-5">
+      <div class="card-body p-5" id="close">
         <p class="lead fw-bold mb-5">Detalle del pedido</p>
+        <p class="close" (click)="Close()">X</p>
         <div class="row">
           <div class="col mb-3 ">
             <p class="small mb-1">Cliente</p>
-            <p>Daniel Supanta</p>
+            <p>{{ order.nameClient }} {{ order.lastnameClient }}</p>
           </div>
           <div class="col mb-3">
             <p class="small mb-1">N° pedido</p>
-            <p>22</p>
+            <p>{{ order.id }}</p>
           </div>
         </div>
         <div class="row">
           <div class="col mb-3">
             <p class="small mb-1">Telefono</p>
-            <p>926197429</p>
+            <p>{{ order.phone }}</p>
           </div>
           <div class="col mb-3">
             <p class="small mb-1">Fecha</p>
-            <p>10 April 2021</p>
+            <p>{{ order.dateOrder }}</p>
           </div>
           <div class="col mb-3">
             <p class="small mb-1">Fecha entrega</p>
-            <p>10 April 2021</p>
+            <p>{{order.orderDeliveryDate}}</p>
           </div>
         </div>
-
         <div class="px-5 py-4 scrollable-section">
+          @for (product of order.products; track $index) {
           <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
+            <div class="col-md-1 col-lg-6">
+              <p>{{product.name}}</p>
             </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
+            <div class="col-md-4 col-lg-2">
+              <p>${{product.price}}</p>
+            </div>
+            <div class="col-md-1 col-lg-2">
+              <p>x{{product.quantity}}</p>
+            </div>
+            <div class="col-md-4 col-lg-2">
+              <p>${{product.totalPartial}}</p>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>BEATS Solo 3 Wireless Headphones</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p>hamburguesa</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p>£299.99</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 col-lg-9">
-              <p class="mb-0">Shipping</p>
-            </div>
-            <div class="col-md-4 col-lg-3">
-              <p class="mb-0">£33.00</p>
-            </div>
-          </div>
+          }
         </div>
-
         <div class="row my-4">
           <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
-            <p class="lead fw-bold mb-0">£262.99</p>
+            <p class="lead fw-bold mb-0">${{order.total}}</p>
           </div>
         </div>
         <p class="lead fw-bold mb-4 pb-2">Actualizar Pedido</p>

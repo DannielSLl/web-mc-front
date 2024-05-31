@@ -3,6 +3,11 @@
     <h1>Gestión de Pedidos</h1>
     <p class="subtitle">Aquí puedes ver y gestionar todos los pedidos entrantes</p>
   </div>
+  @if (orders.length === 0) {
+  <div class="no-orders">
+    <p>No hay pedidos pendientes</p>
+  </div>
+  }
   @for (order of orders; track $index) {
   <div>
     <div class="order-card">
@@ -19,9 +24,9 @@
   }
 </div>
 @if (selectedOrder !== null) {
-  <div class="order-detail-overlay">
-    <div class="order-detail">
-      <app-order-detail [id]="selectedOrder" (viewChange)="handleViewChange($event)"></app-order-detail>
-    </div>
+<div class="order-detail-overlay">
+  <div class="order-detail">
+    <app-order-detail [id]="selectedOrder" (viewChange)="handleViewChange($event)"></app-order-detail>
   </div>
-  }
+</div>
+}
