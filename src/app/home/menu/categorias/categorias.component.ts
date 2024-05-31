@@ -1,5 +1,4 @@
-import { ProductosService } from './../../../services/productos.service';
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CategoriasService } from '../../../services/categorias.service';
 import { CategoriaDto } from '../../../model/categoria.dto';
@@ -11,14 +10,11 @@ import { CategoriaDto } from '../../../model/categoria.dto';
   templateUrl: './categorias.component.html',
   styleUrl: './categorias.component.css',
 })
-export class CategoriasComponent implements OnInit {
-  categorias: CategoriaDto[] = [];
+export class CategoriasComponent implements OnInit{
 
-  constructor(
-    private categoriasService: CategoriasService,
-    private productosService: ProductosService,
-    private elementRef: ElementRef
-  ) {}
+  @Input() categorias: CategoriaDto[] = [];
+
+  constructor( private categoriasService: CategoriasService) {}
 
   ngOnInit(): void {
     this.categoriasService.getAllCategorias().subscribe({
@@ -27,10 +23,7 @@ export class CategoriasComponent implements OnInit {
         console.log(this.categorias);
       },
     });
-  }
-
-  BuscarCategoria(id: number) {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.productosService.FilterProductoByCategoria(id);
+    
   }
 }
+

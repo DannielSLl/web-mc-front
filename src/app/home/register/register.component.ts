@@ -6,8 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RegisterUserDto } from '../../../model/register-user-dto';
-import { AuthClientService } from '../../../services/auth/auth-client.service';
+import { RegisterUserDto } from '../../model/register-user-dto';
+import { AuthClientService } from '../../services/auth/auth-client.service';
 import { Router } from '@angular/router';
 
 @Component({

@@ -29,7 +29,8 @@
           </div>
         </div>
         <div class="mb-2">
-          <input
+          <div class="d-flex flex-row">
+            <input
             type="{{ passwordVisible ? 'text' : 'password' }}"
             class="form-control"
             formControlName="contrasena"
@@ -38,6 +39,8 @@
           <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
             <i class='bx bx-low-vision'></i>
           </button>
+
+          </div>
           <div class="text-danger texto-error">
             @if(registerClientForm.controls['contrasena'].invalid &&
             (registerClientForm.controls['contrasena'].dirty ||

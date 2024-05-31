@@ -1,26 +1,28 @@
-import { Component, Input } from '@angular/core';
-import { IProducto } from '../interfaces/producto.interface';
+import { Component, Input, Output } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { ProductoDto } from '../../../../model/product.dto';
 
 @Component({
   selector: 'app-item-productos',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './item-productos.component.html',
   styleUrl: './item-productos.component.css'
 })
 export class ItemProductosComponent {
 
-  @Input() producto: IProducto = {
+  @Input()
+  producto: ProductoDto = {
 
     id: 0,
     nombre: "",
     descripcion:  "",
     precio:0,
     calorias:0,
-    categoria:{
-      id:0,
-      nombre:  "",
-    },
     img: "",
+    categoria:0
   }
+  
+  constructor() {}
+
 }

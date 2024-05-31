@@ -29,6 +29,7 @@ export const routes: Routes = [
   //Pagina Principal
   { path: '',
     loadComponent: () => import('./home/home.component').then(c => c.HomeComponent),
+    
     children: [
       //Inicio
       {
@@ -36,29 +37,44 @@ export const routes: Routes = [
         title: 'Home',
         loadComponent: () => import('./home/inicio/inicio.component').then(c => c.InicioComponent)
       },
-      //Menus(Categorias)
-      {
-        path: 'menu',
-        title: 'Menu',
+      //Menu
+      { 
+        path: 'menu', 
         loadComponent: () => import('./home/menu/menu.component').then(c => c.MenuComponent),
-      },
-      //Menus
-      {
-        path: 'menu/:categoria',
-        title: 'Menu',
-        loadComponent: () => import('./home/menu/menu.component').then(c => c.MenuComponent),
-      },
-      //Registro
-      {
-        path: 'login',
-        title: 'Login',
-        loadComponent: () => import('./home/auth/login/login.component').then(c => c.LoginComponent)
+        children: [
+
+          //Menu (categorias)
+          { 
+            path: '',
+            title: 'Menu',
+            loadComponent: () => import('./home/menu/categorias/categorias.component').then(c => c.CategoriasComponent),
+          },
+
+          //Productos segun categoria
+          { 
+            path: ':categoria',
+            title: 'Menu',
+            loadComponent: () => import('./home/menu/productos/productos.component').then(c => c.ProductosComponent),
+          },
+          //Productos seleccionado
+          { 
+            path: ':categoria/:id',
+            title: 'Detalles',
+            loadComponent: () => import('./home/menu/producto-detalles/producto-detalles.component').then(c => c.PruductoDetallesComponent)
+          }
+        ]
       },
       //Login
-      {
+      { 
+        path: 'login',
+        title: 'Login', 
+        loadComponent: () => import('./home/login/login.component').then(c => c.LoginComponent)
+      },
+      //Register
+      { 
         path: 'register',
-        title: 'Register',
-        loadComponent: () => import('./home/auth/register/register.component').then(c => c.RegisterComponent)
+        title: 'Register', 
+        loadComponent: () => import('./home/register/register.component').then(c => c.RegisterComponent)
       },
       //Not Found
       {
