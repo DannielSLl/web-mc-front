@@ -24,11 +24,10 @@ export class AuthComponent {
     password: new FormControl(''),
   });
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private authAdminService: AuthAdminService,
-    private tokenService: TokenService,
-    private router: Router
+  constructor(public formBuilder: FormBuilder,
+    public authAdminService: AuthAdminService,
+    public tokenService: TokenService,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +50,7 @@ export class AuthComponent {
       },
       error: (error) => {
         alert(error.message);
-        console.error(error);
+        console.error(error.message);
       },
     });
   }
