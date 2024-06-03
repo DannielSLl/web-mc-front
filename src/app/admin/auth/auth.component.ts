@@ -41,7 +41,8 @@ export class AuthComponent {
   login(): void {
     const dto = new LoginUserDto(
       this.adminAuth.get('email')?.value,
-      this.adminAuth.get('password')?.value
+      this.adminAuth.get('password')?.value,
+      'admin'
     );
     this.authAdminService.login(dto).subscribe({
       next: (data) => {
