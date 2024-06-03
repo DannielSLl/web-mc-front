@@ -9,24 +9,20 @@ import { OrderDetailDto } from '../model/order-detail.dto';
 })
 export class OrdersService {
 
-  private URL = environment.ApiUrl + '/api/orders';
+  private URL = environment.ApiUrl + '/api/';
 
   constructor(private httpClient: HttpClient) { }
 
   public getAllOrders(): Observable<OrderListDto[]>{
-    return this.httpClient.get<OrderListDto[]>(this.URL);
-  }
-
-  public getOrder(id: number): Observable<OrderListDto> {
-    return this.httpClient.get<OrderListDto>(this.URL + '/' + id);
+    return this.httpClient.get<OrderListDto[]>(this.URL + 'pedidos');
   }
 
   getOrderDetail(id: number): Observable<OrderDetailDto> {
-    return this.httpClient.get<OrderDetailDto>(this.URL + '/detail/' + id);
+    return this.httpClient.get<OrderDetailDto>(this.URL + 'orders/detail/' + id);
   }
 
   public markAsCompleted(id: number) {
-    return this.httpClient.put(this.URL + '/completed/' + id, {});
+    return this.httpClient.put(this.URL + 'pedidos/' + id, {});
   }
 
 }

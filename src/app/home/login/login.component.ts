@@ -42,7 +42,8 @@ export class LoginComponent implements OnInit {
   login(): void {
     const dto = new LoginUserDto(
       this.loginClientForm.get('email')?.value,
-      this.loginClientForm.get('password')?.value
+      this.loginClientForm.get('password')?.value,
+      "cliente"
     );
 
     this.authClientService.login(dto).subscribe({

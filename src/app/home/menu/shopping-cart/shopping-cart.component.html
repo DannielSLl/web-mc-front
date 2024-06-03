@@ -1,0 +1,54 @@
+<div class="container my-5">
+  <div class="close-button" (click)="Close()">X</div>
+  <div class="row mb-4">
+    <div class="col-12 text-center">
+      <h1>Shopping Cart</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="table-wrapper">
+        <table class="table table-hover table-responsive-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (product of products; track $index) {
+            <tr>
+              <td>{{ product.name }}</td>
+              <td>{{ product.price }}</td>
+              <td>{{ product.quantity }}</td>
+              <td>{{ product.price * product.quantity }}</td>
+              <td>
+                <button class="btn btn-danger btn-sm" (click)="removeFromCart(product.id)">
+                  <i class="fas fa-trash-alt"></i> Remove
+                </button>
+              </td>
+            </tr>
+          }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-6 offset-md-6 text-right">
+      <h3>Total: asdas</h3>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6 offset-md-6 text-right">
+      <button class="btn btn-success btn-lg" (click)="sendPedido()">
+        <i class="fas fa-shopping-cart"></i> Checkout
+      </button>
+    </div>
+  </div>
+</div>

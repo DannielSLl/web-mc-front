@@ -9,7 +9,7 @@
     <p>{{producto.descripcion}}</p>
     <p>Informacion nutricional: {{producto.calorias}} kCal</p>
     <p>Precio : $ {{producto.precio}} CLP</p>
-    <div class="btn btn-warning">Comenzar pedido</div>
+    <div class="btn btn-warning" (click)="addToCart(producto)">Agregar al carrito</div>
   </div>
 </div>
 
