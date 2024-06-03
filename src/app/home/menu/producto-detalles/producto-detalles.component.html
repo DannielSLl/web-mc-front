@@ -1,0 +1,15 @@
+<div class="d-flex flex-lg-row flex-column py-2">
+  <div class="col-lg-5 d-flex justify-content-center img-container">
+    <img src="{{producto.img}}" alt="">
+  </div>
+  <div class="col-lg-7 d-flex flex-column px-2">
+    <h1 class=" d-flex my-3 fw-bold">
+      {{producto.nombre}}
+    </h1>
+    <p>{{producto.descripcion}}</p>
+    <p>Informacion nutricional: {{producto.calorias}} kCal</p>
+    <p>Precio : $ {{producto.precio}} CLP</p>
+    <div class="btn btn-warning" (click)="addToCart(producto)">Agregar al carrito</div>
+  </div>
+</div>
+

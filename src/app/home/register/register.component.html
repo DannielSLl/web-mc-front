@@ -1,0 +1,144 @@
+<div class="content">
+  <div class="container d-flex my-lg-5 my-3 flex-column flex-lg-row">
+    <div class="front-page col-lg-5 d-flex justify-content-center">
+      <img
+        src="https://i.postimg.cc/rydb3mcM/register-front-page.png"
+        class="img-fluid d-none d-lg-block"
+        alt=""
+      />
+    </div>
+    <div class="col-lg-7 d-flex justify-content-center">
+      <form class="w-75" [formGroup]="registerClientForm">
+        <h1 class="text-center mb-4">Registrarse</h1>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control mb-1"
+            formControlName="email"
+            placeholder="Correo electrónico"
+          />
+          <div class="text-danger texto-error">
+            @if(registerClientForm.controls['email'].invalid &&
+            (registerClientForm.controls['email'].dirty ||
+            registerClientForm.controls['email'].touched)){
+            @if(registerClientForm.controls['email'].errors?.['required']){
+            <span>Este campo es requerido</span>
+            } @if(registerClientForm.controls['email'].errors?.['email']){
+            <span>Formato incorrecto</span>
+            } }
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="d-flex flex-row">
+            <input
+            type="{{ passwordVisible ? 'text' : 'password' }}"
+            class="form-control"
+            formControlName="contrasena"
+            placeholder="Contraseña"
+          />
+          <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+            <i class='bx bx-low-vision'></i>
+          </button>
+
+          </div>
+          <div class="text-danger texto-error">
+            @if(registerClientForm.controls['contrasena'].invalid &&
+            (registerClientForm.controls['contrasena'].dirty ||
+            registerClientForm.controls['contrasena'].touched)){
+            @if(registerClientForm.controls['contrasena'].errors?.['required']){
+            <span> - Este campo es requerido</span>
+            }
+            @if (registerClientForm.controls['contrasena'].errors?.['minlength']) {
+            <span> - La contraseña debe tener al menos 8 caracteres</span>
+            <br>
+            }
+            @if (registerClientForm.controls['contrasena'].errors?.['maxlength']) {
+            <span> - La contraseña debe tener máximo 20 caracteres </span>
+            <br>
+            }
+            @if (registerClientForm.controls['contrasena'].errors?.['pattern']) {
+            <span> - La contraseña debe tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial</span>
+            }
+          }
+          </div>
+        </div>
+        <div class="mb-2">
+          <input
+            type="password"
+            class="form-control"
+            formControlName="confirmaContrasena"
+            placeholder="Confirmar Contraseña"
+          />
+          <div class="text-danger texto-error">
+            @if(registerClientForm.controls['confirmaContrasena'].invalid &&
+            (registerClientForm.controls['confirmaContrasena'].dirty ||
+            registerClientForm.controls['confirmaContrasena'].touched)){
+            @if(registerClientForm.controls['confirmaContrasena'].errors?.['required']){
+            <span>Este campo es requerido</span>
+            }
+            @if(registerClientForm.controls['confirmaContrasena'].getError('MustMatch')!=null){
+            <span>Las contraseñas no coinciden</span>
+            } }
+          </div>
+        </div>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="nombre"
+            placeholder="Nombre"
+          />
+          <div class="text-danger texto-error">
+            @if(registerClientForm.controls['nombre'].invalid &&
+            (registerClientForm.controls['nombre'].dirty ||
+            registerClientForm.controls['nombre'].touched)){
+            @if(registerClientForm.controls['nombre'].errors?.['required']){
+            <span>Este campo es requerido</span>
+            } }
+          </div>
+        </div>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="apellidos"
+            placeholder="Apellidos"
+          />
+          <div class="text-danger texto-error">
+            @if(registerClientForm.controls['apellidos'].invalid &&
+            (registerClientForm.controls['apellidos'].dirty ||
+            registerClientForm.controls['apellidos'].touched)){
+            @if(registerClientForm.controls['apellidos'].errors?.['required']){
+            <span>Este campo es requerido</span>
+            } }
+          </div>
+        </div>
+        <div class="mb-2">
+          <input
+            type="number"
+            class="form-control"
+            formControlName="telefono"
+            placeholder="Teléfeno"
+          />
+          <div class="text-danger texto-error">
+            @if(registerClientForm.controls['telefono'].invalid &&
+            (registerClientForm.controls['telefono'].dirty ||
+            registerClientForm.controls['telefono'].touched)){
+            @if(registerClientForm.controls['telefono'].errors?.['required']){
+            <span>Este campo es requerido</span>
+            } }
+          </div>
+        </div>
+        <div class="mb-2">
+          <button
+            type="button"
+            class="btn btn-warning w-100 mt-2"
+            (click)="register()"
+          >
+            Registrarse
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

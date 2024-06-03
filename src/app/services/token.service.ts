@@ -28,6 +28,17 @@ export class TokenService {
     return this.getToken() != null;
   }
 
+  public getUserId(): number {
+    let token = this.getToken();
+    if (token) {
+      let payload = token.split('.')[1];
+      let payloadDecoded = atob(payload);
+      let payloadJson = JSON.parse(payloadDecoded);
+      return payloadJson.id;
+    }
+    return 0;
+  }
+
   public setLoggedIn(value: boolean) {
     this.isLoggedInSubject.next(value);
   }
