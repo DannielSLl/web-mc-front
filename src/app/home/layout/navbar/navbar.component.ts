@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TokenService } from '../../../services/token.service';
+import { ShoppingCartComponent } from '../../menu/shopping-cart/shopping-cart.component';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [RouterLink],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css',
+    selector: 'app-navbar',
+    standalone: true,
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.css',
+    imports: [RouterLink, ShoppingCartComponent]
 })
 export class NavbarComponent implements OnInit {
+
   isLoggedIn = false;
+  viewCart: boolean = false;
 
   constructor(private tokenService: TokenService) {}
 
@@ -24,4 +27,8 @@ export class NavbarComponent implements OnInit {
     this.tokenService.logOut();
     this.tokenService.setLoggedIn(false);
   }
+
+  handleViewChange() {
+    this.viewCart = !this.viewCart;
+    }
 }

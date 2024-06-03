@@ -58,6 +58,18 @@
             <a class="nav-link" href="#">Contactanos</a>
           </li>
         </ul>
+
+        <ul class="">
+          <li>
+            <a class="nav-link">
+              <i class='bx bx-cart' (click)="handleViewChange()">Cart</i>
+              @if (viewCart) {
+              <app-shopping-cart (viewChange)="handleViewChange()" ></app-shopping-cart>
+            }
+            </a>
+          </li>
+        </ul>
+
         <ul class="navbar-nav justify-content-lg-end">
           @if (!isLoggedIn) {
           <li class="nav-item">
