@@ -21,9 +21,9 @@ export class OrderDetailComponent implements OnChanges {
   @Output() viewChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() id!: number;
 
-  order!: OrderDetailDto;
+  order: OrderDetailDto = {} as OrderDetailDto;
 
-  constructor(private orderService: OrdersService) {}
+  constructor(public orderService: OrdersService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.getOrderDetail(changes['id'].currentValue);
@@ -36,7 +36,7 @@ export class OrderDetailComponent implements OnChanges {
         this.Close();
       },
       error: (error) => {
-        console.error(error);
+        console.error(error.message);
       },
     });
   }
@@ -45,13 +45,13 @@ export class OrderDetailComponent implements OnChanges {
     this.viewChange.emit(false);
   }
 
-  private getOrderDetail(id: number) {
+  public getOrderDetail(id: number) {
     this.orderService.getOrderDetail(id).subscribe({
       next: (data) => {
         this.order = data;
       },
       error: (error) => {
-        console.error(error);
+        console.error(error.message);
       },
     });
   }
