@@ -22,7 +22,7 @@ export class ItemProductosComponent {
     img: "",
     categoria:0
   }
-  
+
   constructor() {}
 
 }

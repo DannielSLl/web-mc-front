@@ -9,48 +9,31 @@ import { ItemProductosComponent } from './item-productos/item-productos.componen
   standalone: true,
   imports: [ItemProductosComponent],
   templateUrl: './productos.component.html',
-  styleUrl: './productos.component.css'
+  styleUrl: './productos.component.css',
 })
 export class ProductosComponent {
-
   productosList: ProductoDto[] = [];
 
-  constructor( 
+  constructor(
     private productoService: ProductosService,
-    private route : ActivatedRoute
+    private route: ActivatedRoute
   ) {}
-  
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
 
-      const categoriaId = +params.get('categoria')!; 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      const categoriaId = +params.get('categoria')!;
 
       if (categoriaId) {
-
         this.filtrarProductosPorCategoria(categoriaId);
-
-      } else {
-
-        this.getProductos();
-        
       }
     });
   }
 
-  getProductos(): void{
-
-    this.productoService.getProductos().subscribe((productos) => {
-
-      this.productosList = productos;
-    });
-  }
-
   filtrarProductosPorCategoria(categoriaId: number): void {
-
-    this.productoService.getProductoByCategoria(categoriaId).subscribe((productosFiltrados) => {
-
-      this.productosList = productosFiltrados;
-    });
+    this.productoService
+      .getProductoByCategoria(categoriaId)
+      .subscribe((productosFiltrados) => {
+        this.productosList = productosFiltrados;
+      });
   }
-
 }
