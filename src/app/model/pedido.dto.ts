@@ -25,10 +25,8 @@ export class PedidoDto {
 export class PedidoDetalleDTO {
   productoId: number;
   cantidad: number;
-  precio: number;
-  constructor(productoId: number, cantidad: number, precio: number) {
+  constructor(productoId: number, cantidad: number) {
     this.productoId = productoId;
     this.cantidad = cantidad;
-    this.precio = precio;
   }
 }
