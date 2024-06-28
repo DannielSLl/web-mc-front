@@ -1,4 +1,3 @@
-import { ProductosService } from './productos.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment.production';
 import { Injectable } from '@angular/core';

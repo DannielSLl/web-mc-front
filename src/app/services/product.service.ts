@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment.development';
 @Injectable({
   providedIn: 'root',
 })
-export class ProductosService{
+export class ProductService{
 
   // private productosList: ProductoDto[] = [
   //   {
@@ -72,15 +72,24 @@ export class ProductosService{
   constructor(private httpCliente: HttpClient) {}
 
 
-  public getProductos(): Observable<ProductoDto[]> {
+  public getProducts(): Observable<ProductoDto[]> {
     return this.httpCliente.get<ProductoDto[]>(this.URL);
   }
 
-  public getProductoById(id: number): Observable<ProductoDto> {
+  public getProductById(id: number): Observable<ProductoDto> {
     return this.httpCliente.get<ProductoDto>(this.URL + id);
   }
 
-  public getProductoByCategoria(id: number): Observable<ProductoDto[]>  {
+  public getProductByCategoria(id: number): Observable<ProductoDto[]>  {
     return this.httpCliente.get<ProductoDto[]>(this.URL + 'categoria/' + id);
+  }
+
+  public createProduct(product: ProductoDto): Observable<any> {
+    return this.httpCliente.post<any>(this.URL, product);
+  }
+
+  public updateProduct(id: number, product: ProductoDto): Observable<ProductoDto> {
+    console.log(product);
+    return this.httpCliente.put<ProductoDto>(this.URL + id, product);
   }
 }

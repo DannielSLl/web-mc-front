@@ -1,9 +1,8 @@
 <h2>Productos</h2>
 
 <div class="card">
-  <p-table #dt2 [value]="products" dataKey="id" [rows]="10" [loading]="loading"
-    [paginator]="true" [globalFilterFields]="['id', 'nombre', 'categoria']"
-    [tableStyle]="{ 'min-width': '75rem' }">
+  <p-table #dt2 [value]="products" dataKey="id" [rows]="10" [loading]="loading" [paginator]="true"
+    [globalFilterFields]="['id', 'nombre', 'categoria']" [tableStyle]="{ 'min-width': '75rem' }">
     <ng-template pTemplate="caption">
       <div class="flex">
         <p-iconField iconPosition="left" class="ml-auto">
@@ -13,6 +12,9 @@
           <input pInputText type="text" (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
             placeholder="Search keyword" />
         </p-iconField>
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          Agregar
+        </button>
       </div>
     </ng-template>
     <ng-template pTemplate="header">
@@ -51,15 +53,13 @@
         </td>
         <td>
           <span class="ml-1 vertical-align-middle">
-            {{ products.categoria }}
+            {{ products.categoria.id }}
           </span>
         </td>
         <td>
-          <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getProduct(products.id)">
             <i class='bx bx-edit'></i>
           </button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for </button>
-
           <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             <i class='bx bx-trash'></i>
           </button>
@@ -74,30 +74,41 @@
   </p-table>
 </div>
 
-<!-- Modal -->
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Producto</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
+        <form class="w-75" [formGroup]="productForm">
+        <div class="mb-3">
+          <input type="text" formControlName="nombre" class="form-control" id="formGroupExampleInput"
+            placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+          <input type="text" formControlName="descripcion" class="form-control" id="formGroupExampleInput" placeholder="Descripcion">
+        </div>
+        <div class="mb-3">
+          <input type="number" formControlName="precio" class="form-control" id="formGroupExampleInput" placeholder="Precio">
+        </div>
+        <div class="mb-3">
+          <input type="number" formControlName="calorias" class="form-control" id="formGroupExampleInput" placeholder="Calorias">
+        </div>
+        <div class="input-group mb-3">
+          <select formControlName="categoria" class="form-select" id="inputGroupSelect01">
+            <option value="">Selecciona una categoría</option>
+            <option value="3">Helados</option>
+            <option value="4">Hamburguesas</option>
+          </select>
+        </div>
+      </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" (click)="editProduct()">Guardar</button>
       </div>
     </div>
   </div>

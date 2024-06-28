@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CategoriasService } from '../../../services/categorias.service';
 import { CategoriaDto } from '../../../model/categoria.dto';
@@ -12,7 +12,7 @@ import { CategoriaDto } from '../../../model/categoria.dto';
 })
 export class CategoriasComponent implements OnInit{
 
-  @Input() categorias: CategoriaDto[] = [];
+  categorias: CategoriaDto[] = [];
 
   constructor( private categoriasService: CategoriasService) {}
 
@@ -23,7 +23,6 @@ export class CategoriasComponent implements OnInit{
         console.log(this.categorias);
       },
     });
-    
   }
 }
 
