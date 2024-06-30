@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { filter, Observable, of } from 'rxjs';
 import { ProductoDto } from '../model/product.dto';
 import { environment } from '../../environments/environment.development';
+import { LocalProducto } from '../model/local-productos.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -82,5 +83,9 @@ export class ProductosService{
 
   public getProductoByCategoria(id: number): Observable<ProductoDto[]>  {
     return this.httpCliente.get<ProductoDto[]>(this.URL + 'categoria/' + id);
+  }
+
+  public getProductoByLocal(id: number): Observable<LocalProducto[]>  {
+    return this.httpCliente.get<LocalProducto[]>(this.URL + 'local/' + id);
   }
 }
