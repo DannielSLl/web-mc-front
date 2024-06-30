@@ -42,7 +42,6 @@ export class OrdersClientService {
       let detalle: PedidoDetalleDTO = {
         cantidad: product.quantity,
         productoId: product.id,
-        precio: product.price
       };
       pedidoDetalle.push(detalle);
     });
