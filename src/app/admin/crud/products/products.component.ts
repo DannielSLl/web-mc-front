@@ -21,6 +21,7 @@ import { ProductoDto } from '../../../model/product.dto';
 import { ButtonModule } from 'primeng/button';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ProductService } from '../../../services/product.service';
+import { CreateProductDto } from '../../../model/create-product.dto';
 
 @Component({
   selector: 'app-products',
@@ -60,6 +61,7 @@ export class ProductsComponent implements OnInit {
     descripcion: new FormControl(''),
     precio: new FormControl(),
     calorias: new FormControl(),
+    local: new FormControl(),
     img: new FormControl(''),
     categoria: new FormControl(),
   });
@@ -71,6 +73,7 @@ export class ProductsComponent implements OnInit {
       descripcion: ['', Validators.required],
       precio: ['', Validators.required],
       calorias: ['', Validators.required],
+      local: [''],
       img: ['', Validators.required],
       categoria: ['', Validators.required],
     });
@@ -92,6 +95,30 @@ export class ProductsComponent implements OnInit {
       this.productForm.get('categoria')!.setValue(product!.categoria.id);
     });
   }
+
+  saveProduct() {
+    let product: CreateProductDto = new CreateProductDto(
+      this.productForm.value.nombre!,
+      this.productForm.value.descripcion!,
+      +this.productForm.value.precio,
+      +this.productForm.value.calorias,
+      +this.productForm.value.local,
+      +this.productForm.value.categoria,
+      this.productForm.value.img!,
+    );
+    this.productService.createProduct(product).subscribe({
+      next: (data) => {
+
+        console.log(data);
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
+        console.log(this.productForm.valid);
+        console.log(this.productForm.value);
+        console.log(product);
+      }
+    });
+    }
 
   editProduct() {
     let productId = this.productForm.value.id;
@@ -136,4 +163,17 @@ export class ProductsComponent implements OnInit {
         return undefined; // Este es el caso base
     }
   }
+
+  protected clear() {
+    this.productForm.reset({
+      id: '',
+      nombre: '',
+      descripcion: '',
+      precio: '',
+      calorias: '',
+      local: '',
+      img: '',
+      categoria: '',
+    });
+    }
 }
