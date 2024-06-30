@@ -4,6 +4,7 @@ import { filter, Observable, of } from 'rxjs';
 import { ProductoDto } from '../model/product.dto';
 import { environment } from '../../environments/environment.development';
 import { CreateProductDto } from '../model/create-product.dto';
+import { LocalProducto } from '../model/local-productos.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -92,5 +93,9 @@ export class ProductService{
   public updateProduct(id: number, product: ProductoDto): Observable<ProductoDto> {
     console.log(product);
     return this.httpCliente.put<ProductoDto>(this.URL + id, product);
+  }
+
+  public getProductByLocal(id: number): Observable<LocalProducto[]>  {
+    return this.httpCliente.get<LocalProducto[]>(this.URL + 'local/' + id);
   }
 }

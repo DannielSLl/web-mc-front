@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArticleComponent } from './article/article.component';
 import { IArticle } from './article/article.interface';
 import { ARTICLES } from './article/constants';
 import { CarouselComponent } from './carousel/carousel.component';
+import { MatDialog} from '@angular/material/dialog'
+import { DialogBodyLocalComponent } from '../dialog-body-local/dialog-body-local.component';
+import { LocalElegidoService } from '../../services/local-elegido.service';
 
 @Component({
   selector: 'app-inicio',
@@ -11,7 +14,12 @@ import { CarouselComponent } from './carousel/carousel.component';
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })
-export class InicioComponent {
+export class InicioComponent{
 
+  
   articles: IArticle[] = ARTICLES;
+
+  constructor() {}
+
 }
+

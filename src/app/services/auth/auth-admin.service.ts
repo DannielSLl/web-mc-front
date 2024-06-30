@@ -12,7 +12,7 @@ export class AuthAdminService {
 
   constructor(private httpClient: HttpClient) {}
 
-  URL = environment.ApiUrl + '/api/auth/admin';
+  URL = environment.ApiUrl + '/api/auth';
 
   public login(dto: LoginUserDto): Observable<JwtTokenDto> {
     return this.httpClient.post<JwtTokenDto>(this.URL + '/signin', dto);
