@@ -1,4 +1,4 @@
-import { ProductosService } from './productos.service';
+import { LocalElegidoService } from './local-elegido.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment.production';
 import { Injectable } from '@angular/core';
@@ -17,7 +17,8 @@ export class OrdersClientService {
   constructor(
     private tokenService: TokenService,
     private http: HttpClient,
-    private cartService: CartService
+    private cartService: CartService,
+    private localElegidoService: LocalElegidoService
   ) {}
 
   sendOrder(): Observable<PedidoDto> {
@@ -30,7 +31,7 @@ export class OrdersClientService {
       precioTotal,
       "Efectivo",
       pedidoDetalle,
-      1,
+      this.localElegidoService.getLocalElegido() ?? 1,
       userId
     );
     return this.http.post<PedidoDto>(this.URL, pedido);
@@ -42,7 +43,6 @@ export class OrdersClientService {
       let detalle: PedidoDetalleDTO = {
         cantidad: product.quantity,
         productoId: product.id,
-        precio: product.price
       };
       pedidoDetalle.push(detalle);
     });

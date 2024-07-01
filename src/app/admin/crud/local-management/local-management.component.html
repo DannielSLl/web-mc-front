@@ -1,0 +1,124 @@
+<h2>Locales</h2>
+
+<div class="card">
+  <p-table #dt2 [value]="locales" dataKey="id" [rows]="10" [paginator]="true"
+    [globalFilterFields]="['nombre', 'direccion', 'ciudad']" [tableStyle]="{ 'min-width': '75rem' }">
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <p-iconField iconPosition="left" class="ml-auto">
+          <p-inputIcon>
+            <i class="pi pi-search"></i>
+          </p-inputIcon>
+          <input pInputText type="text" (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
+            placeholder="Search keyword" />
+        </p-iconField>
+        <button type="button" class="btn btn-outline-success" (click)="clear()" data-bs-toggle="modal" data-bs-target="#createProduct">
+          Agregar
+        </button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:5%">id</th>
+        <th style="width:15%">Nombre</th>
+        <th style="width:15%">Direccion</th>
+        <th style="width:5%">Ciudad</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-locales>
+      <tr>
+        <td>
+          {{ locales.id }}
+        </td>
+        <td>
+          <span class="ml-1 vertical-align-middle">
+            {{ locales.nombre }}
+          </span>
+        </td>
+        <td>
+          <span class="ml-1 vertical-align-middle">
+            {{ locales.direccion }}
+          </span>
+        </td>
+        <td>
+          <span class="ml-1 vertical-align-middle">
+            {{ locales.ciudad }}
+          </span>
+        </td>
+        <td>
+          <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getProduct(locales.id)">
+            <i class='bx bx-edit'></i>
+          </button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteLocal(locales.id)">
+            <i class='bx bx-trash'></i>
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">No customers found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Producto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="w-75" [formGroup]="localForm">
+        <div class="mb-3">
+          <input type="text" formControlName="nombre" class="form-control" id="formGroupExampleInput"
+            placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+          <input type="text" formControlName="direccion" class="form-control" id="formGroupExampleInput" placeholder="direccion">
+        </div>
+        <div class="mb-3">
+          <input type="number" formControlName="ciudad" class="form-control" id="formGroupExampleInput" placeholder="ciudad">
+        </div>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" (click)="updateLocal()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="createProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Producto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="w-75" [formGroup]="localForm">
+        <div class="mb-3">
+          <input type="text" formControlName="nombre" class="form-control" id="formGroupExampleInput"
+            placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+          <input type="text" formControlName="direccion" class="form-control" id="formGroupExampleInput" placeholder="direccion">
+        </div>
+        <div class="mb-3">
+          <input type="number" formControlName="ciudad" class="form-control" id="formGroupExampleInput" placeholder="ciudad">
+        </div>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" (click)="createLocal()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

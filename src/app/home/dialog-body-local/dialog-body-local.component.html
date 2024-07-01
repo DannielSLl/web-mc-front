@@ -1,0 +1,18 @@
+<h2 mat-dialog-title class="text-center">Selecciona Un Local</h2>
+<div mat-dialog-content class="d-flex flex-column justify-content-between">
+  <form [formGroup]="localForm">
+    @for (local of locales; track local){
+      <div class="form-check d-flex flex-row-reverse p-0 justify-content-between">
+        <input class="form-check-input" type="radio" id={{local.id}} value={{local.id}} formControlName="local">
+        <label class="form-check-label" for={{local.id}}>
+          <div>
+            <p><strong>{{local.nombre}}</strong></p>
+            <p>{{local.direccion}}</p>
+            <p>{{local.ciudad}}</p>
+          </div>
+        </label>
+      </div>
+    }
+  </form>
+  <button type="button" class="btn btn-warning" (click)="localSeleccionado()">Elegir</button>
+</div>

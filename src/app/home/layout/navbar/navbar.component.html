@@ -49,23 +49,26 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Promociones</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="#">Nuestros Locales</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contactanos</a>
           </li>
+          <li class="nav-item">
+            <button class="btn btn-warning" (click)="EligeLocal()">Elige Local</button>
+          </li>
         </ul>
 
-        <ul class="">
+        <div>
+          Local: {{local.nombre}}
+        </div>
+        <ul class="navbar-nav justify-content-lg-end">
           <li>
             <a class="nav-link">
-              <i class='bx bx-cart' (click)="handleViewChange()">Cart</i>
-              @if (viewCart) {
-              <app-shopping-cart (viewChange)="handleViewChange()" ></app-shopping-cart>
-            }
+              <i class='bx bx-cart' (click)="handleViewChange()">Carrito</i>
+              @if (viewCart && isLoggedIn){
+                  <app-shopping-cart app-shopping-cart (viewChange)="handleViewChange()" ></app-shopping-cart>
+              }
             </a>
           </li>
         </ul>
