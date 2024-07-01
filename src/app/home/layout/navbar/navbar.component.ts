@@ -6,24 +6,23 @@ import { Local } from '../../../model/local.dto';
 import { LocalesService } from '../../../services/locales.service';
 import { LocalElegidoService } from '../../../services/local-elegido.service';
 import { DialogBodyLocalComponent } from '../../dialog-body-local/dialog-body-local.component';
-import { MatDialog} from '@angular/material/dialog'
-
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-    selector: 'app-navbar',
-    standalone: true,
-    templateUrl: './navbar.component.html',
-    styleUrl: './navbar.component.css',
-    imports: [RouterLink, ShoppingCartComponent]
+  selector: 'app-navbar',
+  standalone: true,
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css',
+  imports: [RouterLink, ShoppingCartComponent],
 })
 export class NavbarComponent implements OnInit {
-
   isLoggedIn = false;
   viewCart: boolean = false;
-  local: Local = {id:0, nombre:'', ciudad:'',direccion:''}
+  local: Local = {} as Local;
 
-  constructor(private tokenService: TokenService,
-    private localService : LocalesService,
+  constructor(
+    private tokenService: TokenService,
+    private localService: LocalesService,
     private matDialog: MatDialog,
     private localElegidoService: LocalElegidoService
   ) {}
@@ -33,31 +32,29 @@ export class NavbarComponent implements OnInit {
       this.isLoggedIn = isLoggedIn;
     });
 
+    const id = this.localElegidoService.getLocalElegido();
 
-    const id = this.localElegidoService.getLocalElegido()
-    
     if (id) {
-
-      this.localService.getLocalById(id).subscribe(
-        (local) => {this.local = local}
-      )
+      this.localService.getLocalById(id).subscribe((local) => {
+        this.local = local;
+        console.log(local);
+      });
     }
   }
 
   EligeLocal(): void {
     const dialogRef = this.matDialog.open(DialogBodyLocalComponent, {
       height: '400px',
-      width: '500px'
+      width: '500px',
     });
 
-    dialogRef.afterClosed().subscribe(selectedLocal => {
+    dialogRef.afterClosed().subscribe((selectedLocal) => {
       if (selectedLocal) {
         // Actualizar sessionStorage con el local seleccionado
         sessionStorage.setItem('localElegido', JSON.stringify(selectedLocal));
-        
+
         // Actualizar el servicio LocalElegidoService
         this.localElegidoService.setLocalElegido(selectedLocal);
-
       }
     });
   }
@@ -69,5 +66,5 @@ export class NavbarComponent implements OnInit {
 
   handleViewChange() {
     this.viewCart = !this.viewCart;
-    }
+  }
 }

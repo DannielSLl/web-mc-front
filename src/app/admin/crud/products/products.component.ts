@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { Table } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
@@ -17,6 +23,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Modal } from 'bootstrap';
 import { ProductoDto } from '../../../model/product.dto';
 import { ButtonModule } from 'primeng/button';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -42,17 +49,16 @@ import { CreateProductDto } from '../../../model/create-product.dto';
     ReactiveFormsModule,
   ],
   templateUrl: './products.component.html',
-  styleUrl: './products.component.css',
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-
   loading: boolean = false;
-
   products: ProductoDto[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
-    private productService: ProductService
+    private productService: ProductService,
+    private renderer: Renderer2
   ) {}
 
   productForm = new FormGroup({
@@ -86,13 +92,15 @@ export class ProductsComponent implements OnInit {
   getProduct(id: number) {
     this.productService.getProductById(id).subscribe((product) => {
       console.log(product);
-      this.productForm.get('id')!.setValue(product!.id);
-      this.productForm.get('nombre')!.setValue(product!.nombre);
-      this.productForm.get('descripcion')!.setValue(product!.description);
-      this.productForm.get('precio')!.setValue(product!.precio);
-      this.productForm.get('calorias')!.setValue(product!.calorias);
-      this.productForm.get('img')!.setValue(product!.img);
-      this.productForm.get('categoria')!.setValue(product!.categoria.id);
+      this.productForm.patchValue({
+        id: product.id,
+        nombre: product.nombre,
+        descripcion: product.description,
+        precio: product.precio,
+        calorias: product.calorias,
+        img: product.img,
+        categoria: product.categoria.id,
+      });
     });
   }
 
@@ -104,30 +112,32 @@ export class ProductsComponent implements OnInit {
       +this.productForm.value.calorias,
       +this.productForm.value.local,
       +this.productForm.value.categoria,
-      this.productForm.value.img!,
+      this.productForm.value.img!
     );
     this.productService.createProduct(product).subscribe({
       next: (data) => {
-
-        console.log(data);
+        this.productService.getProducts().subscribe((products) => {
+          this.products = products;
+        });
+        alert(data.message);
       },
       error: (error) => {
         console.error('There was an error!', error);
         console.log(this.productForm.valid);
         console.log(this.productForm.value);
         console.log(product);
-      }
+      },
     });
-    }
+  }
 
   editProduct() {
     let productId = this.productForm.value.id;
     let product: ProductoDto = new ProductoDto(
-      this.productForm.value.id,
+      this.productForm.value.id!,
       this.productForm.value.nombre!,
       this.productForm.value.descripcion!,
-      this.productForm.value.precio,
-      this.productForm.value.calorias,
+      +this.productForm.value.precio,
+      +this.productForm.value.calorias,
       this.productForm.value.img!,
       this.productForm.value.categoria
     );
@@ -138,14 +148,23 @@ export class ProductsComponent implements OnInit {
       },
       error: (error) => {
         console.error('There was an error!', error);
-      }
-    })
-  }
-  // "success" | "secondary" | "info" | "warning" | "danger" | "contrast" | undefined
-  deleteProduct(_t12: any) {
-    throw new Error('Method not implemented.');
+      },
+    });
   }
 
+  deleteProduct(id: number) {
+    this.productService.deleteProduct(id).subscribe({
+      next: (data) => {
+        this.productService.getProducts().subscribe((products) => {
+          this.products = products;
+        });
+        alert(data.message);
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
+      },
+    });
+  }
 
   getSeverity(status: string) {
     switch (status) {
@@ -175,5 +194,5 @@ export class ProductsComponent implements OnInit {
       img: '',
       categoria: '',
     });
-    }
+  }
 }

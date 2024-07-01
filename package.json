@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "bootstrap": "^5.3.3",
     "express": "^4.19.2",
     "path": "^0.12.7",
     "primeng": "^17.18.1",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.5",
+    "@types/bootstrap": "^5.2.10",
     "@types/jasmine": "~5.1.0",
     "enhanced-resolve": "^3.3.0",
     "jasmine-core": "~5.1.0",
