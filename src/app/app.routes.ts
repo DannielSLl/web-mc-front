@@ -1,4 +1,6 @@
+import { inject } from '@angular/core';
 import { Routes } from '@angular/router';
+import { adminGuard } from './guard/admin.guard';
 
 export const routes: Routes = [
 
@@ -13,6 +15,7 @@ export const routes: Routes = [
   },
   { path:'dashboard',
     loadComponent: () => import('./admin/default.component').then(c => c.DefaultComponent),
+    canActivate: [adminGuard],
     data: {
       title: 'Admin'
     },
@@ -29,7 +32,7 @@ export const routes: Routes = [
   //Pagina Principal
   { path: '',
     loadComponent: () => import('./home/home.component').then(c => c.HomeComponent),
-    
+
     children: [
       //Inicio
       {
@@ -38,26 +41,26 @@ export const routes: Routes = [
         loadComponent: () => import('./home/inicio/inicio.component').then(c => c.InicioComponent)
       },
       //Menu
-      { 
-        path: 'menu', 
+      {
+        path: 'menu',
         loadComponent: () => import('./home/menu/menu.component').then(c => c.MenuComponent),
         children: [
 
           //Menu (categorias)
-          { 
+          {
             path: '',
             title: 'Menu',
             loadComponent: () => import('./home/menu/categorias/categorias.component').then(c => c.CategoriasComponent),
           },
 
           //Productos segun categoria
-          { 
+          {
             path: ':categoria',
             title: 'Menu',
             loadComponent: () => import('./home/menu/productos/productos.component').then(c => c.ProductosComponent),
           },
           //Productos seleccionado
-          { 
+          {
             path: ':categoria/:id',
             title: 'Detalles',
             loadComponent: () => import('./home/menu/producto-detalles/producto-detalles.component').then(c => c.PruductoDetallesComponent)
@@ -65,15 +68,15 @@ export const routes: Routes = [
         ]
       },
       //Login
-      { 
+      {
         path: 'login',
-        title: 'Login', 
+        title: 'Login',
         loadComponent: () => import('./home/login/login.component').then(c => c.LoginComponent)
       },
       //Register
-      { 
+      {
         path: 'register',
-        title: 'Register', 
+        title: 'Register',
         loadComponent: () => import('./home/register/register.component').then(c => c.RegisterComponent)
       },
       //Not Found

@@ -28,6 +28,17 @@ export class TokenService {
     return this.getToken() != null;
   }
 
+  public isAdmin(): boolean {
+    let token = this.getToken();
+    if (token) {
+      let payload = token.split('.')[1];
+      let payloadDecoded = atob(payload);
+      let payloadJson = JSON.parse(payloadDecoded);
+      return payloadJson.userType === 'admin';
+    }
+    return false;
+  }
+
   public getUserId(): number {
     let token = this.getToken();
     if (token) {

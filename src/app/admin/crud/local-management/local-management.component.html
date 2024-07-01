@@ -2,7 +2,7 @@
 
 <div class="card">
   <p-table #dt2 [value]="locales" dataKey="id" [rows]="10" [paginator]="true"
-    [globalFilterFields]="['id', 'nombre', 'categoria']" [tableStyle]="{ 'min-width': '75rem' }">
+    [globalFilterFields]="['nombre', 'direccion', 'ciudad']" [tableStyle]="{ 'min-width': '75rem' }">
     <ng-template pTemplate="caption">
       <div class="flex">
         <p-iconField iconPosition="left" class="ml-auto">
@@ -78,10 +78,10 @@
             placeholder="Nombre">
         </div>
         <div class="mb-3">
-          <input type="text" formControlName="direccion" class="form-control" id="formGroupExampleInput" placeholder="Descripcion">
+          <input type="text" formControlName="direccion" class="form-control" id="formGroupExampleInput" placeholder="direccion">
         </div>
         <div class="mb-3">
-          <input type="number" formControlName="ciudad" class="form-control" id="formGroupExampleInput" placeholder="Precio">
+          <input type="number" formControlName="ciudad" class="form-control" id="formGroupExampleInput" placeholder="ciudad">
         </div>
       </form>
       </div>
@@ -108,10 +108,10 @@
             placeholder="Nombre">
         </div>
         <div class="mb-3">
-          <input type="text" formControlName="direccion" class="form-control" id="formGroupExampleInput" placeholder="Descripcion">
+          <input type="text" formControlName="direccion" class="form-control" id="formGroupExampleInput" placeholder="direccion">
         </div>
         <div class="mb-3">
-          <input type="number" formControlName="ciudad" class="form-control" id="formGroupExampleInput" placeholder="Precio">
+          <input type="number" formControlName="ciudad" class="form-control" id="formGroupExampleInput" placeholder="ciudad">
         </div>
       </form>
       </div>
