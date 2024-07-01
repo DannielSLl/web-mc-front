@@ -2,7 +2,7 @@ export class PedidoDto {
   precioTotal: number;
   fecha: Date = new Date();
   fechaEntrega: Date = new Date();
-  estado: boolean = false;
+  estado: boolean = true;
   metodoPago: string;
   detalles: PedidoDetalleDTO[] = [];
   localId: number;

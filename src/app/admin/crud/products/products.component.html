@@ -1,0 +1,165 @@
+<h2>Productos</h2>
+
+<div class="card">
+  <p-table #dt2 [value]="products" dataKey="id" [rows]="10" [loading]="loading" [paginator]="true"
+    [globalFilterFields]="['id', 'nombre', 'categoria']" [tableStyle]="{ 'min-width': '75rem' }">
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <p-iconField iconPosition="left" class="ml-auto">
+          <p-inputIcon>
+            <i class="pi pi-search"></i>
+          </p-inputIcon>
+          <input pInputText type="text" (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
+            placeholder="Search keyword" />
+        </p-iconField>
+        <button type="button" class="btn btn-outline-success" (click)="clear()" data-bs-toggle="modal" data-bs-target="#createProduct">
+          Agregar
+        </button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:5%">id</th>
+        <th style="width:15%">Nombre</th>
+        <th style="width:15%">Descripcion</th>
+        <th style="width:5%">precio</th>
+        <th style="width:5%">Calorias</th>
+        <th style="width:5%">Categoria</th>
+        <th style="width:10%">Gestion</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-products>
+      <tr>
+        <td>
+          {{ products.id }}
+        </td>
+        <td>
+          <span class="ml-1 vertical-align-middle">
+            {{ products.nombre }}
+          </span>
+        </td>
+        <td>
+          <span class="ml-1 vertical-align-middle">
+            {{ products.descripcion }}
+          </span>
+        </td>
+        <td>
+          <p-tag [value]="products.precio" [severity]="'success'" />
+        </td>
+        <td>
+          <span class="ml-1 vertical-align-middle">
+            {{ products.calorias }}
+          </span>
+        </td>
+        <td>
+          <span class="ml-1 vertical-align-middle">
+            {{ products.categoria.id }}
+          </span>
+        </td>
+        <td>
+          <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getProduct(products.id)">
+            <i class='bx bx-edit'></i>
+          </button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteProduct(products.id)">
+            <i class='bx bx-trash'></i>
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">No customers found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Producto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="w-75" [formGroup]="productForm">
+        <div class="mb-3">
+          <input type="text" formControlName="nombre" class="form-control" id="formGroupExampleInput"
+            placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+          <input type="text" formControlName="descripcion" class="form-control" id="formGroupExampleInput" placeholder="Descripcion">
+        </div>
+        <div class="mb-3">
+          <input type="number" formControlName="precio" class="form-control" id="formGroupExampleInput" placeholder="Precio">
+        </div>
+        <div class="mb-3">
+          <input type="number" formControlName="calorias" class="form-control" id="formGroupExampleInput" placeholder="Calorias">
+        </div>
+        <div class="input-group mb-3">
+          <select formControlName="categoria" class="form-select" id="inputGroupSelect01">
+            <option value="">Selecciona una categoría</option>
+            <option value="3">Helados</option>
+            <option value="4">Hamburguesas</option>
+          </select>
+        </div>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" (click)="editProduct()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="createProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Producto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="w-75" [formGroup]="productForm">
+        <div class="mb-3">
+          <input type="text" formControlName="nombre" class="form-control" id="formGroupExampleInput"
+            placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+          <input type="text" formControlName="descripcion" class="form-control" id="formGroupExampleInput" placeholder="Descripcion">
+        </div>
+        <div class="mb-3">
+          <input type="number" formControlName="precio" class="form-control" id="formGroupExampleInput" placeholder="Precio">
+        </div>
+        <div class="mb-3">
+          <input type="number" formControlName="calorias" class="form-control" id="formGroupExampleInput" placeholder="Calorias">
+        </div>
+        <div class="input-group mb-3">
+          <select formControlName="categoria" class="form-select" id="inputGroupSelect01">
+            <option value="">Selecciona una categoría</option>
+            <option value="3">Helados</option>
+            <option value="4">Hamburguesas</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <select formControlName="local" class="form-select" id="inputGroupSelect01">
+            <option value="">Seleccione un local</option>
+            <option value="1">21 de mayo</option>
+            <option value="2">Mallplaza</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <input type="text" formControlName="img" class="form-control" id="formGroupExampleInput" placeholder="Imagen url">
+        </div>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" (click)="saveProduct()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

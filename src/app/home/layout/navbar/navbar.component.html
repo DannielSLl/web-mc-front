@@ -59,14 +59,14 @@
           </li>
         </ul>
 
+        <div>
+          Local: {{local.nombre}}
+        </div>
         <ul class="navbar-nav justify-content-lg-end">
-          <div>
-            hola {{local.id}}
-          </div>
           <li>
             <a class="nav-link">
-              @if (viewCart && !isLoggedIn){
-                <i class='bx bx-cart' (click)="handleViewChange()">Carrito</i>
+              <i class='bx bx-cart' (click)="handleViewChange()">Carrito</i>
+              @if (viewCart && isLoggedIn){
                   <app-shopping-cart app-shopping-cart (viewChange)="handleViewChange()" ></app-shopping-cart>
               }
             </a>

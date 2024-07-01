@@ -18,7 +18,7 @@ export class OrdersService {
   }
 
   getOrderDetail(id: number): Observable<OrderDetailDto> {
-    return this.httpClient.get<OrderDetailDto>(this.URL + 'orders/detail/' + id);
+    return this.httpClient.get<OrderDetailDto>(this.URL + 'pedidos/' + id);
   }
 
   public markAsCompleted(id: number) {

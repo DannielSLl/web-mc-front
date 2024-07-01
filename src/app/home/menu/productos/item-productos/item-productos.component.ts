@@ -16,11 +16,15 @@ export class ItemProductosComponent {
 
     id: 0,
     nombre: "",
-    descripcion:  "",
+    description:  "",
     precio:0,
     calorias:0,
     img: "",
-    categoria:0
+    categoria: {
+      id: 0,
+      nombre: "",
+      url: ""
+    }
   }
 
   constructor() {}

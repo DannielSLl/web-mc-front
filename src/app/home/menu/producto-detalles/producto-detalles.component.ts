@@ -1,8 +1,8 @@
+import { ProductService } from './../../../services/product.service';
 import { CartItemsDto } from './../../../model/cartItems.dto';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ProductoDto } from '../../../model/product.dto';
 import { ActivatedRoute } from '@angular/router';
-import { ProductosService } from '../../../services/productos.service';
 import { CartService } from '../../../services/cart.service';
 
 @Component({
@@ -10,30 +10,32 @@ import { CartService } from '../../../services/cart.service';
   standalone: true,
   imports: [],
   templateUrl: './producto-detalles.component.html',
-  styleUrl: './producto-detalles.component.css'
+  styleUrl: './producto-detalles.component.css',
 })
-export class PruductoDetallesComponent implements OnInit{
+export class PruductoDetallesComponent implements OnInit {
   @Input()
   producto: ProductoDto = {
-
     id: 0,
-    nombre: "",
-    descripcion:  "",
-    precio:0,
-    calorias:0,
-    img: "",
-    categoria:0
-  }
+    nombre: '',
+    description: '',
+    precio: 0,
+    calorias: 0,
+    img: '',
+    categoria: {
+      id: 0,
+      nombre: '',
+      url: '',
+    },
+  };
 
   constructor(
     private route: ActivatedRoute,
-    private productosService: ProductosService,
+    private productService: ProductService,
     private cartService: CartService
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-
+    this.route.paramMap.subscribe((params) => {
       const productId = +params.get('id')!;
 
       if (productId) {
@@ -43,8 +45,7 @@ export class PruductoDetallesComponent implements OnInit{
   }
 
   obtenerProductoPorId(productId: number): void {
-    this.productosService.getProductoById(productId).subscribe((producto) => {
-
+    this.productService.getProductById(productId).subscribe((producto) => {
       if (producto) {
         this.producto = producto;
       } else {
@@ -53,7 +54,12 @@ export class PruductoDetallesComponent implements OnInit{
     });
   }
   addToCart(product: ProductoDto) {
-    const cartItem: CartItemsDto = new CartItemsDto(product.id, product.nombre, product.precio, 1);
+    const cartItem: CartItemsDto = new CartItemsDto(
+      product.id,
+      product.nombre,
+      product.precio,
+      1
+    );
     this.cartService.addToCart(cartItem);
   }
 }

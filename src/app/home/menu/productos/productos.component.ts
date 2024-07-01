@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductoDto } from '../../../model/product.dto';
-import { ProductosService } from '../../../services/productos.service';
+import { ProductService } from '../../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { ItemProductosComponent } from './item-productos/item-productos.component';
 import { LocalElegidoService } from '../../../services/local-elegido.service';
@@ -17,17 +17,16 @@ export class ProductosComponent {
   productosList: ProductoDto[] = [];
 
   constructor(
-    private productoService: ProductosService,
+    private productService: ProductService,
     private route: ActivatedRoute,
     private localElegidoService: LocalElegidoService
   ) {}
 
   ngOnInit(): void {
-    
+
     console.log(this.localElegidoService.getLocalElegido())
     const idLocal = this.localElegidoService.getLocalElegido();
 
-      
     if(idLocal){
       this.filtrarProductosPorLocal(idLocal);
       console.log(this.productosList);
@@ -36,18 +35,27 @@ export class ProductosComponent {
   }
 
   filtrarProductosPorCategoria(categoriaId: number): void {
-    this.productoService
-      .getProductoByCategoria(categoriaId)
+    this.productService
+      .getProductByCategoria(categoriaId)
       .subscribe((productosFiltrados) => {
         this.productosList = productosFiltrados;
       });
   }
 
   filtrarProductosPorLocal(LocalId: number): void {
-    this.productoService.getProductoByLocal(LocalId).subscribe({
+    this.productService.getProductByLocal(LocalId).subscribe({
       next: (data: LocalProducto[]) => {
         this.productosList = data.map(item => item.producto);
       }
     });
+  }
+
+  getProductByCategoria(categoriaId: number): void {
+    this.productService
+      .getProductByCategoria(categoriaId)
+      .subscribe((products) => {
+        console.log(products);
+        this.productosList = products;
+      });
   }
 }
